@@ -7,6 +7,11 @@
   background: #f2f0ef;
   overflow-x: hidden;
   box-sizing: border-box;
+
+  position: relative;
+  z-index: 11;
+
+  box-shadow: 0 -25px 60px rgba(0, 0, 0, 0.15);
 }
 
 .work-grid {
