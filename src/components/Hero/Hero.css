@@ -1,0 +1,65 @@
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 100dvh;
+  background: #050505;
+  overflow: visible;
+  z-index: 1;
+}
+
+.hero-image {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+
+  transform: translateX(-50%);
+
+  width: 100%;
+  height: auto;
+
+  z-index: 10;
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1000;
+
+  width: 100%;
+  min-height: 100dvh;
+
+  padding: 0 5vw;
+  box-sizing: border-box;
+}
+
+.hero h1 {
+  font-family: "Geist Mono", monospace;
+
+  color: #fff;
+
+  font-size: clamp(12rem, 34vw, 24rem);
+  font-weight: 900;
+
+  line-height: 0.88;
+  letter-spacing: 0;
+
+  text-align: center;
+  margin-bottom: 3rem;
+  margin-top: 10rem;
+}
+
+.hero-subtitle {
+  margin-left: clamp(2.5rem, 22vw, 25.5rem);
+  margin-top: 0rem;
+}
+
+.hero-subtitle p {
+  color: #b5b5b5;
+
+  font-family: sans-serif;
+
+  font-weight: 600;
+
+  font-size: 2.5rem;
+
+}
