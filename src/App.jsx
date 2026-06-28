@@ -4,6 +4,7 @@ import Intro from "./components/Intro/Intro.jsx";
 import Work from "./components/Work/Work.jsx";
 import Contact from "./components/Contact/contact-Hero.jsx";
 import ContactCTA from "./components/Contact/ContactCTA.jsx";
+import Footer from "./components/Footer/Footer.jsx";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
       <Work />
       <Contact />
       <ContactCTA />
+      <Footer />
     </div>
   )
 }
