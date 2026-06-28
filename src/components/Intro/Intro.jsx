@@ -21,7 +21,9 @@ const Intro = () => {
         </h2>
 
         <div className="author">
-          <img src={PortfolioImage} alt="Devansh Kashyap" />
+          <div className="author-img-wrapper">
+            <img src={PortfolioImage} alt="Devansh Kashyap" />
+          </div>
 
           <div className="author-info">
             <span>DEVANSH KASHYAP</span>
