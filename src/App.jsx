@@ -2,6 +2,7 @@ import Navbar from "./components/Navbar/Navbar.jsx";
 import Hero from "./components/Hero/Hero.jsx";
 import Intro from "./components/Intro/Intro.jsx";
 import Work from "./components/Work/Work.jsx";
+import Contact from "./components/Contact/contact-Hero.jsx";
 
 const App = () => {
   return (
@@ -10,6 +11,7 @@ const App = () => {
       <Navbar />
       <Intro />
       <Work />
+      <Contact />
     </div>
   )
 }
