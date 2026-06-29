@@ -1,0 +1,38 @@
+@import url("https://api.fontshare.com/v2/css?f[]=bespoke-sans@300,400,500,700,900&display=swap");
+@import url("https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap");
+
+.whatICanDo {
+  margin: 12rem 2rem;
+  color: white;
+  height: 70vh;
+  overflow: hidden;
+}
+
+.whatICanDo p {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  font-family: "Bespoke Sans";
+  letter-spacing: 0.05rem;
+  color: #6b6560;
+  font-weight: 600;
+}
+
+.whatICanDo .expertises-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.whatICanDo .experties {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.whatICanDo .experties h1 {
+  font-family: "Satoshi";
+  font-size: 5rem;
+  margin-top: 0;
+  margin-bottom: 2rem;
+}

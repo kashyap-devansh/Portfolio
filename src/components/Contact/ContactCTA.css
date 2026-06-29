@@ -23,6 +23,7 @@
 }
 
 .contact-cta .end-wrapper {
+  margin-top: 5rem;
   display: flex;
   align-items: center;
   gap: 0.3rem;
