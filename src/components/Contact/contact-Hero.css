@@ -1,12 +1,90 @@
+/* 
+  Aspect ratio from Framer inspector: 1.25341 / 1 
+  This means width is ~1.25x the height — like a wide landscape section
+*/
+@import url("https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap");
+
 .contact-hero {
+  position: relative;
   width: 100%;
-  height: 100vh;
+  height: 150vh;
+  aspect-ratio: 1.25341 / 1;
   overflow: hidden;
 }
 
-.contact-hero img {
+/* ── LAYER 1: Wallpaper (background image) ── */
+.wallpaper {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  z-index: 1;
+}
+
+.wallpaper-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  object-position: center center;
+  object-fit: cover;
+}
+
+/* ── LAYER 2: Text Content ── */
+.content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 6% 6%;
+}
+
+.line-1,
+.line-2 {
+  will-change: transform;
+  opacity: 1;
+}
+
+.line-1 {
+  transform: translateX(180px) translateY(910px);
+}
+
+.line-2 {
+  position: relative;
+  z-index: 100;
+  transform: translateX(700px) translateY(900px);
+}
+
+.contact-hero h1 {
+  font-family: "Satoshi";
+  font-size: 14rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: rgb(242, 240, 239);
+  /* from Framer: rgb(242, 240, 239) */
+  line-height: 0.95;
+  margin: 0;
+  padding: 0;
+  letter-spacing: -0.5rem;
+}
+
+/* ── LAYER 3: Sticker (hero person) sits on TOP ── */
+.sticker {
+  position: absolute;
+  height: 45%;
+  aspect-ratio: 1.25341 / 1;
+  left: 50%;
+  transform: translateX(-50%) translateY(85px);
+  bottom: 250px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.sticker-img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
+  object-position: center center;
+  border-radius: inherit;
 }
