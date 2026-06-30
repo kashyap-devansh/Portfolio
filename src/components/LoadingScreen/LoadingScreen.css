@@ -1,0 +1,24 @@
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: #000;
+}
+
+.loading-text {
+  color: white;
+
+  font-size: clamp(3rem, 7vw, 6rem);
+
+  font-family: "Ranade", sans-serif;
+  font-weight: 700;
+
+  letter-spacing: -2px;
+
+  user-select: none;
+}
