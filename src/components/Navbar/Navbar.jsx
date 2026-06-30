@@ -1,9 +1,16 @@
+import { motion } from "framer-motion";
 import "./Navbar.css";
 import DownloadIcon from "../../assets/download.svg";
 
-function Navbar() {
+const Navbar = ({ loading }) => {
   return (
-    <nav className="navbar">
+    <motion.nav className="navbar"
+      initial={{ opacity: 0, y: -60 }}
+      animate={
+        loading ? { opacity: 0, y: -60 } : { opacity: 1, y: 0 }
+      }
+      transition={{ duration: 0.8, ease: "easeOut", delay: 1 }}
+    >
       <span>Devansh</span>
       <div className="navbar-links">
         <a href="#">/BOUT ME</a>
@@ -15,7 +22,7 @@ function Navbar() {
         <span>Resume</span>
         <img src={DownloadIcon} alt="" className="download" />
       </a>
-    </nav>
+    </motion.nav>
   );
 }
 

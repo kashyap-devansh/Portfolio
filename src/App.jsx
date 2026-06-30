@@ -34,7 +34,7 @@ const App = () => {
           delay: 0.2,
         }}
       >
-        <Navbar />
+        <Navbar loading={loading} />
         <Hero loading={loading} />
         <Intro />
         <Work />
