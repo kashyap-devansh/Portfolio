@@ -35,7 +35,7 @@ const App = () => {
         }}
       >
         <Navbar />
-        <Hero />
+        <Hero loading={loading} />
         <Intro />
         <Work />
         <MyStack />

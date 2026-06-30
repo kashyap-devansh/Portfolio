@@ -1,7 +1,7 @@
 .hero {
   position: relative;
   width: 100%;
-  min-height: 100dvh;
+  min-height: 110dvh;
   background: #050505;
   overflow: visible;
   z-index: 1;
@@ -30,6 +30,7 @@
 
   padding: 0 5vw;
   box-sizing: border-box;
+  position: fixed;
 }
 
 .hero h1 {
@@ -50,16 +51,13 @@
 
 .hero-subtitle {
   margin-left: clamp(2.5rem, 22vw, 25.5rem);
-  margin-top: 0rem;
+  margin-top: -2rem;
+  overflow: hidden;
 }
 
 .hero-subtitle p {
   color: #b5b5b5;
-
   font-family: sans-serif;
-
   font-weight: 600;
-
   font-size: 2.5rem;
-
 }
