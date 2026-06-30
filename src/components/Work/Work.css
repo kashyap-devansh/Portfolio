@@ -7,9 +7,10 @@
   background: #f2f0ef;
   overflow-x: hidden;
   box-sizing: border-box;
-
+  border-radius: 0 0 44px 44px;
   position: relative;
   z-index: 11;
+  margin-bottom: -90px;
 }
 
 .work-grid {

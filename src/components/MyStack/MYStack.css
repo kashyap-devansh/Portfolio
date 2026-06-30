@@ -1,0 +1,89 @@
+@import url("https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap");
+@import url("https://api.fontshare.com/v2/css?f[]=supreme@300,400,500,700,900&display=swap");
+@import url("https://api.fontshare.com/v2/css?f[]=pilcrow-rounded@300,400,500,700,900&display=swap");
+
+.my-stack {
+  position: relative;
+  height: 100vh;
+}
+
+.my-stack-bg {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+}
+
+.my-stack h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f2f0ef;
+  font-size: 18rem;
+  margin-top: -20rem;
+  font-family: "Satoshi";
+  font-weight: 900;
+  margin-bottom: 0;
+}
+
+.stack-keywords {
+  color: #6b6560;
+  font-family: "Supreme";
+  display: flex;
+  font-size: 1.5rem;
+  align-items: center;
+  justify-content: space-evenly;
+  letter-spacing: 2px;
+  font-weight: 500;
+  margin-top: -5rem;
+}
+
+.stack-flex {
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 20vh;
+}
+
+.tech-card {
+  background-color: #f2f0ef;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 6%;
+  width: 20%;
+  margin-top: -5%;
+}
+
+.tech-title {
+  font-family: "Pilcrow Rounded";
+  font-size: 3.5rem;
+  width: 90%;
+  text-align: center;
+  border-bottom: 3px solid #000000;
+}
+
+.tech-image img {
+  height: 15vh;
+  margin-bottom: 40%;
+}
+
+.tech-tags {
+  display: flex;
+  width: 95%;
+  justify-content: space-evenly;
+  align-items: center;
+  overflow: hidden;
+}
+
+.tech-tag {
+  text-align: center;
+  padding-left: 2.5%;
+  padding-right: 2.5%;
+  font-family: "Supreme";
+  font-size: 1.7rem;
+  font-weight: 500;
+  letter-spacing: 0.03rem;
+  border: 3px solid #cfcfcf;
+  border-radius: 15px;
+  overflow: hidden;
+  margin-bottom: 5%;
+}
