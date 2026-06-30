@@ -11,8 +11,8 @@ import Footer from "./components/Footer/Footer.jsx";
 const App = () => {
   return (
     <div>
-      <Hero />
       <Navbar />
+      <Hero />
       <Intro />
       <Work />
       <MyStack />

@@ -58,7 +58,7 @@
   font-family: "Satoshi";
   overflow: hidden;
   cursor: pointer;
-  transition: color 0.4s ease;
+  transition: color 0.3s ease;
 }
 
 .lets-chat::before {
@@ -70,7 +70,7 @@
   transform: scaleY(0);
   transform-origin: bottom;
 
-  transition: transform 0.4s ease;
+  transition: transform 0.3s ease;
 }
 
 .lets-chat span {
