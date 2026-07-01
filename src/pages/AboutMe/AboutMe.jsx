@@ -1,6 +1,7 @@
 import AboutMeHero from "./AboutMeHero/AboutMeHero.jsx";
 import Links from "./Links/Links.jsx";
 import Introduction from "./Introduction/Introduction.jsx";
+import Education from "./Education/Education.jsx";
 import "./AboutMe.css";
 
 const AboutMe = () => {
@@ -9,6 +10,7 @@ const AboutMe = () => {
       <AboutMeHero />
       <Links />
       <Introduction />
+      <Education />
     </div>
   )
 }

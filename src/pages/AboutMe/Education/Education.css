@@ -1,0 +1,65 @@
+@import url("https://api.fontshare.com/v2/css?f[]=supreme@300,400,500,700,900&display=swap");
+@import url("https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap");
+
+.education {
+  padding: 8rem 0;
+  width: 96%;
+  margin-left: 1.5%;
+  border-bottom: 3px solid #a8a8a8;
+}
+
+.education-eyebrow {
+  color: #6b6560;
+  font-family: "supreme";
+  font-size: 1.35rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: -0.3px;
+}
+
+.education-content-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.education-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 85%;
+  padding: 5rem 0;
+  gap: 2rem;
+}
+
+.education-content h2 {
+  color: #6b6560;
+  font-size: 5rem;
+}
+
+.education-content .img-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.education img {
+  width: 150px;
+  height: 150px;
+}
+
+.education-card h3 {
+  font-family: "Satoshi";
+  font-size: 2.7rem;
+  margin-bottom: 0;
+  letter-spacing: -1.8px;
+}
+
+.education h6 {
+  color: #6b6560;
+  font-size: 1.4rem;
+  font-family: "Supreme";
+  font-weight: 500;
+  margin-top: 30px;
+}
