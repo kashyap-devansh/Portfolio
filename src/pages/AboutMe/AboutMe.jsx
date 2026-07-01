@@ -1,10 +1,14 @@
+import AboutMeHero from "./AboutMeHero/AboutMeHero.jsx";
+import Links from "./Links/Links.jsx";
+import "./AboutMe.css";
+
 const AboutMe = () => {
   return (
-    <div>
-      <h1>Hello</h1>
-
+    <div className="aboutMe">
+      <AboutMeHero />
+      <Links />
     </div>
   )
-};
+}
 
-export default AboutMe;
+export default AboutMe
