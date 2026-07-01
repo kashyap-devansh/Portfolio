@@ -10,8 +10,10 @@ import MyStack from "./components/MyStack/MyStack.jsx";
 import Contact from "./components/Contact/contact-Hero.jsx";
 import ContactCTA from "./components/Contact/ContactCTA.jsx";
 import Footer from "./components/Footer/Footer.jsx";
-
 import LoadingScreen from "./components/LoadingScreen/LoadingScreen.jsx";
+
+import { Routes, Route } from "react-router-dom";
+import AboutMe from "./pages/AboutMe/AboutMe.jsx";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -26,26 +28,40 @@ const App = () => {
 
       <motion.div
         initial={{ opacity: 0 }}
-        animate={{
-          opacity: loading ? 0 : 1,
-        }}
-        transition={{
-          duration: 0.8,
-          delay: 0.2,
-        }}
+        animate={{ opacity: loading ? 0 : 1 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
       >
-        <Navbar loading={loading} />
-        <Hero loading={loading} />
-        <Intro />
-        <Work />
-        <MyStack />
-        <WhatICanDO />
-        <Contact />
-        <ContactCTA />
-        <Footer />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <Navbar loading={loading} />
+                <Hero loading={loading} />
+                <Intro />
+                <Work />
+                <MyStack />
+                <WhatICanDO />
+                <Contact />
+                <ContactCTA />
+                <Footer />
+              </>
+            }
+          />
+
+          <Route
+            path="/about"
+            element={
+              <>
+                <Navbar loading={loading} />
+                <AboutMe />
+              </>
+            }
+          />
+        </Routes>
       </motion.div>
     </>
   );
 };
 
-export default App; 
+export default App;

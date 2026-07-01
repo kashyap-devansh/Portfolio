@@ -75,6 +75,7 @@
 
 .resume {
   border: 2px solid #ffffff;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   padding: 0.7%;
