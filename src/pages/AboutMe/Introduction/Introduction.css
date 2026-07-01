@@ -1,0 +1,28 @@
+@import url("https://api.fontshare.com/v2/css?f[]=supreme@300,400,500,700,900&display=swap");
+@import url("https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap");
+
+.introduction {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 96%;
+  margin-left: 1.5%;
+  padding: 8rem 0;
+  border-bottom: 2px solid #6b6560;
+}
+
+.introduction p {
+  color: #6b6560;
+  font-family: "supreme";
+  font-size: 1.35rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: -0.3px;
+}
+
+.introduction h2 {
+  font-family: "Satoshi";
+  font-size: 4.5vh;
+  font-weight: 700;
+  width: 80%;
+}
