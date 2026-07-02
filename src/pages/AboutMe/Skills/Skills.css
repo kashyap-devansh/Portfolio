@@ -1,0 +1,143 @@
+@import url("https://api.fontshare.com/v2/css?f[]=supreme@300,400,500,700,900&display=swap");
+@import url("https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap");
+
+.skills {
+  padding: 8rem 0;
+  width: 96%;
+  margin-left: 1.5%;
+  border-bottom: 3px solid #a8a8a8;
+  height: 45vh;
+}
+
+.skills p {
+  color: #6b6560;
+  font-family: "supreme";
+  font-size: 1.35rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: -0.3px;
+  width: 50%;
+}
+
+.skills-content {
+  display: flex;
+}
+
+.skills .info {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  position: relative;
+}
+
+.info h6 {
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  font-family: "Satoshi";
+  width: 18rem;
+  margin: 0;
+}
+
+.info-label {
+  color: #6b6560;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+}
+
+.skills .info-value {
+  height: 0.5rem;
+  width: 30rem;
+  background-color: #a8a8a8;
+  border-radius: 999px;
+}
+
+.skills .value {
+  background-color: #161616;
+  height: 0.5rem;
+  border-top-left-radius: 999px;
+  border-bottom-left-radius: 999px;
+}
+
+.coding {
+  width: 98%;
+  border-top-right-radius: 999px;
+  border-bottom-right-radius: 999px;
+}
+
+.linux {
+  width: 80%;
+}
+
+.curiosity {
+  width: 95%;
+}
+
+.teamwork {
+  width: 88%;
+}
+
+.yapping {
+  width: 100%;
+  border-top-right-radius: 999px;
+  border-bottom-right-radius: 999px;
+}
+
+.box {
+  background-color: #a8a8a8;
+  position: absolute;
+  width: 120%;
+  transform: translateX(-6%) translateY(340%);
+  height: 8rem;
+  border-radius: 10px;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.box span {
+  font-family: "Satoshi";
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #292929;
+}
+
+.lock {
+  position: absolute;
+  width: 90px;
+  height: auto;
+  opacity: 0.25;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.lock img {
+  width: 100%;
+  height: auto;
+}
+
+.dummy1 {
+  background-color: #a3a3a3;
+  position: absolute;
+  width: 115%;
+  transform: translateX(-4.5%) translateY(355%);
+  height: 8rem;
+  border-radius: 10px;
+  z-index: 2;
+}
+
+.dummy2 {
+  background-color: #a0a0a0;
+  position: absolute;
+  width: 110%;
+  transform: translateX(-2.5%) translateY(370%);
+  height: 8rem;
+  border-radius: 10px;
+  z-index: 1;
+}

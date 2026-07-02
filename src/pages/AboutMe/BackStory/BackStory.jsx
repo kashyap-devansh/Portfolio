@@ -8,22 +8,22 @@ const BackStory = () => {
 
         <div className="info">
           <div className="info-item">
-            <h6 className="info-label">race:</h6>
+            <h6 className="info-label">race :</h6>
             <h6 className="info-value">human</h6>
           </div>
 
           <div className="info-item">
-            <h6 className="info-label">age:</h6>
+            <h6 className="info-label">age :</h6>
             <h6 className="info-value">19</h6>
           </div>
 
           <div className="info-item">
-            <h6 className="info-label">languages:</h6>
+            <h6 className="info-label">languages :</h6>
             <h6 className="info-value">hindi/english</h6>
           </div>
 
           <div className="info-item">
-            <h6 className="info-label">finanical:</h6>
+            <h6 className="info-label">finanical :</h6>
             <h6 className="info-value">broke</h6>
           </div>
 
