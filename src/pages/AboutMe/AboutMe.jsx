@@ -2,6 +2,7 @@ import AboutMeHero from "./AboutMeHero/AboutMeHero.jsx";
 import Links from "./Links/Links.jsx";
 import Introduction from "./Introduction/Introduction.jsx";
 import Education from "./Education/Education.jsx";
+import BackStory from "./BackStory/BackStory.jsx";
 import "./AboutMe.css";
 
 const AboutMe = () => {
@@ -11,6 +12,7 @@ const AboutMe = () => {
       <Links />
       <Introduction />
       <Education />
+      <BackStory />
     </div>
   )
 }
