@@ -1,0 +1,77 @@
+@import url("https://api.fontshare.com/v2/css?f[]=supreme@300,400,500,700,900&display=swap");
+@import url("https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap");
+
+.outSideOfCode {
+  padding: 8rem 0;
+  width: 96%;
+  margin-left: 1.5%;
+  border-bottom: 3px solid #a8a8a8;
+}
+
+.outSideOfCode p {
+  color: #6b6560;
+  font-family: "supreme";
+  font-size: 1.35rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: -0.3px;
+  width: 50%;
+}
+
+.outSideOfCode-content {
+  display: flex;
+}
+
+.outSideOfCode .info {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  position: relative;
+}
+
+.info h6 {
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  font-family: "Satoshi";
+  width: 18rem;
+  margin: 0;
+}
+
+.info-label {
+  color: #6b6560;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+}
+
+.outSideOfCode .info-value {
+  height: 0.5rem;
+  width: 30rem;
+  background-color: #a8a8a8;
+  border-radius: 999px;
+}
+
+.outSideOfCode .value {
+  background-color: #161616;
+  height: 0.5rem;
+  border-top-left-radius: 999px;
+  border-bottom-left-radius: 999px;
+}
+
+.gaming {
+  width: 64%;
+}
+
+.movies {
+  width: 70%;
+}
+
+.music {
+  width: 87%;
+}
+
+.anime {
+  width: 70%;
+}

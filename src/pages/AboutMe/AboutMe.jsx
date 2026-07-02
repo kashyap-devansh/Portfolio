@@ -4,6 +4,7 @@ import Introduction from "./Introduction/Introduction.jsx";
 import Education from "./Education/Education.jsx";
 import BackStory from "./BackStory/BackStory.jsx";
 import Skills from "./Skills/Skills.jsx";
+import OutSideOfCode from "./OutSideOfCode/OutSideOfCode.jsx";
 import "./AboutMe.css";
 
 const AboutMe = () => {
@@ -15,6 +16,7 @@ const AboutMe = () => {
       <Education />
       <BackStory />
       <Skills />
+      <OutSideOfCode />
     </div>
   )
 }

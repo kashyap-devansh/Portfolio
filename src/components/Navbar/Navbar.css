@@ -14,6 +14,8 @@
 
   background: transparent;
   box-sizing: border-box;
+
+  mix-blend-mode: difference;
 }
 
 .navbar span {
@@ -113,7 +115,7 @@
 }
 
 .download {
-  filter: invert(1);
+  mix-blend-mode: difference;
 }
 
 .resume:hover {
