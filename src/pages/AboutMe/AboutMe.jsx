@@ -5,6 +5,9 @@ import Education from "./Education/Education.jsx";
 import BackStory from "./BackStory/BackStory.jsx";
 import Skills from "./Skills/Skills.jsx";
 import OutSideOfCode from "./OutSideOfCode/OutSideOfCode.jsx";
+import Journey from "./Journey/Journey.jsx";
+import Footer from "../../components/Footer/Footer.jsx";
+
 import "./AboutMe.css";
 
 const AboutMe = () => {
@@ -17,6 +20,8 @@ const AboutMe = () => {
       <BackStory />
       <Skills />
       <OutSideOfCode />
+      <Journey />
+      <Footer />
     </div>
   )
 }

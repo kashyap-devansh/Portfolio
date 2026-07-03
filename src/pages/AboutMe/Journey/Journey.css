@@ -1,0 +1,89 @@
+@import url("https://api.fontshare.com/v2/css?f[]=supreme@300,400,500,700,700&display=swap");
+@import url("https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,700&display=swap");
+
+.journey {
+  background: #000;
+  color: #fff;
+}
+
+.bg {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.journey-content {
+  width: 95%;
+  margin: auto;
+}
+
+.journey-section {
+  display: grid;
+  grid-template-columns: 48% 52%;
+  margin-bottom: 100px;
+  border-bottom: 1px solid #6b6560;
+  padding-bottom: 10rem;
+}
+
+.section-title p {
+  font-family: "Supreme";
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.section-items {
+  width: 100%;
+}
+
+.journey-card {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 180px 1fr 40px;
+  align-items: center;
+  padding: 0 1.5rem;
+  border-bottom: 1px solid #6b6560;
+  color: #6b6560;
+  transition: padding 0.3s ease;
+}
+
+.journey-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #6b656050;
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.3s ease;
+}
+
+.journey-card:hover::before {
+  transform: scaleY(1);
+}
+
+.journey-card:hover {
+  padding: 0 3rem;
+}
+
+.journey-card span:first-child {
+  font-size: 1.4rem;
+  font-weight: 700;
+  font-family: "Satoshi";
+}
+
+.journey-card h6 {
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: "Supreme";
+  font-weight: 700;
+  margin: 2.5rem 0;
+}
+
+.journey-card span:last-child {
+  text-align: right;
+  font-size: 3rem;
+  cursor: pointer;
+  font-weight: 700;
+}
