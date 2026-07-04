@@ -5,27 +5,27 @@ import image from "../../assets/portfolio_image.png"
 const projects = [
   {
     id: 1,
-    title: "Matching Cards",
+    title: "Project One",
     image: image,
-    tags: ["PRODUCT DESIGNER", "REVENUE BOOST"],
+    tags: ["TAG", "TAG"],
   },
   {
     id: 2,
-    title: "The Road Home",
+    title: "Project Two",
     image: image,
-    tags: ["USABILITY TESTER", "USER RESEARCH"],
+    tags: ["TAG", "TAG"],
   },
   {
     id: 3,
     title: "Project Three",
     image: image,
-    tags: ["UI DESIGN"],
+    tags: ["TAG"],
   },
   {
     id: 4,
     title: "Project Four",
     image: image,
-    tags: ["FRONTEND", "REACT"],
+    tags: ["TAG", "TAG"],
   },
 ];
 

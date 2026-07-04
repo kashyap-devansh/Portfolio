@@ -8,6 +8,7 @@ import OutSideOfCode from "./OutSideOfCode/OutSideOfCode.jsx";
 import Journey from "./Journey/Journey.jsx";
 import Footer from "../../components/Footer/Footer.jsx";
 import ToolBox from "./ToolBox/ToolBox.jsx";
+import Name from "./Name/Name.jsx";
 
 import "./AboutMe.css";
 
@@ -23,6 +24,7 @@ const AboutMe = () => {
       <OutSideOfCode />
       <Journey />
       <ToolBox />
+      <Name />
       <Footer />
     </div>
   )

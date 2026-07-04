@@ -1,0 +1,12 @@
+.name {
+  color: white;
+  background-color: #000000;
+  font-family: "Geist Mono", monospace;
+  color: #fff;
+  font-size: 8rem;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-align: center;
+  margin-top: -11rem;
+  margin-bottom: -11rem;
+}
