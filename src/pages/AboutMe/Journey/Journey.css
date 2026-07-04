@@ -20,7 +20,7 @@
 
 .journey-section {
   display: grid;
-  grid-template-columns: 48% 52%;
+  grid-template-columns: 52% 48%;
   margin-bottom: 100px;
   border-bottom: 1px solid #6b6560;
   padding-bottom: 10rem;
@@ -28,7 +28,7 @@
 
 .section-title p {
   font-family: "Supreme";
-  font-size: 1.35rem;
+  font-size: 1.1rem;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: 500;
@@ -42,7 +42,7 @@
   position: relative;
   overflow: hidden;
   display: grid;
-  grid-template-columns: 180px 1fr 40px;
+  grid-template-columns: 150px 1fr 40px;
   align-items: center;
   padding: 0 1.5rem;
   border-bottom: 1px solid #6b6560;
@@ -69,23 +69,23 @@
 }
 
 .journey-card span:first-child {
-  font-size: 1.4rem;
+  font-size: 1rem;
   font-weight: 700;
   font-family: "Satoshi";
 }
 
 .journey-card h6 {
-  font-size: 1.4rem;
+  font-size: 1rem;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-family: "Supreme";
   font-weight: 700;
-  margin: 2.5rem 0;
+  margin: 1.8rem 0;
 }
 
 .journey-card span:last-child {
   text-align: right;
-  font-size: 3rem;
+  font-size: 2rem;
   cursor: pointer;
   font-weight: 700;
 }

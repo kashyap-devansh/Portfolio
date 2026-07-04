@@ -3,7 +3,8 @@
 
 .work {
   width: 100%;
-  padding: 80px 40px;
+  padding: 0 20px;
+  padding-bottom: 15rem;
   background: #f2f0ef;
   overflow-x: hidden;
   box-sizing: border-box;
@@ -28,7 +29,7 @@
   position: relative;
   overflow: hidden;
   width: 100%;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 18 / 13;
 }
 
 .work-image img {
@@ -57,7 +58,7 @@
   color: #f2f0ef;
   padding: 8px 14px;
   border-radius: 6px;
-  font-size: 18px;
+  font-size: 0.8rem;
   font-family: "Ranade";
   letter-spacing: 1px;
   font-weight: 700;
@@ -65,7 +66,7 @@
 
 .work-title {
   margin-top: 18px;
-  font-size: clamp(4rem, 4vw, 4rem);
+  font-size: clamp(2rem, 3vw, 3rem);
   font-family: "sans-serif";
   font-weight: 600;
   color: #000;

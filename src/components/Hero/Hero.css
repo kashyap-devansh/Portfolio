@@ -38,7 +38,7 @@
 
   color: #fff;
 
-  font-size: clamp(12rem, 34vw, 24rem);
+  font-size: clamp(10rem, 30vw, 20rem);
   font-weight: 900;
 
   line-height: 0.88;
@@ -50,7 +50,7 @@
 }
 
 .hero-subtitle {
-  margin-left: clamp(2.5rem, 22vw, 25.5rem);
+  margin-left: clamp(2rem, 20vw, 25rem);
   margin-top: -2rem;
   overflow: hidden;
 }

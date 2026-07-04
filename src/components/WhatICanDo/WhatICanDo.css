@@ -10,7 +10,7 @@
 }
 
 .whatICanDo p {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   text-transform: uppercase;
   font-family: "Bespoke Sans";
   letter-spacing: 0.05rem;
@@ -23,13 +23,13 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  margin-left: 29vw;
+  margin-left: 25vw;
   padding-top: 5rem;
 }
 
 .experties h1 {
   font-family: "Satoshi";
-  font-size: 5rem;
+  font-size: 4rem;
   margin: 0;
   line-height: 1.1;
   transition: color 0.3s ease;

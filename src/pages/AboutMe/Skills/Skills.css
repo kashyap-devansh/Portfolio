@@ -12,7 +12,7 @@
 .skills p {
   color: #6b6560;
   font-family: "supreme";
-  font-size: 1.35rem;
+  font-size: 1.1rem;
   text-transform: uppercase;
   font-weight: 500;
   letter-spacing: -0.3px;
@@ -31,7 +31,7 @@
 }
 
 .info h6 {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   text-transform: uppercase;
   font-family: "Satoshi";
   width: 18rem;
@@ -88,9 +88,9 @@
 .box {
   background-color: #a8a8a8;
   position: absolute;
-  width: 120%;
-  transform: translateX(-6%) translateY(340%);
-  height: 8rem;
+  width: 115%;
+  transform: translateX(-6%) translateY(390%);
+  height: 6.5rem;
   border-radius: 10px;
   z-index: 5;
   display: flex;
@@ -102,7 +102,7 @@
 
 .box span {
   font-family: "Satoshi";
-  font-size: 1.5rem;
+  font-size: 1rem;
   text-transform: uppercase;
   font-weight: 700;
   color: #292929;
@@ -110,7 +110,7 @@
 
 .lock {
   position: absolute;
-  width: 90px;
+  width: 70px;
   height: auto;
   opacity: 0.25;
   z-index: 4;
@@ -125,9 +125,9 @@
 .dummy1 {
   background-color: #a3a3a3;
   position: absolute;
-  width: 115%;
-  transform: translateX(-4.5%) translateY(355%);
-  height: 8rem;
+  width: 110%;
+  transform: translateX(-4.5%) translateY(405%);
+  height: 6.5rem;
   border-radius: 10px;
   z-index: 2;
 }
@@ -135,9 +135,9 @@
 .dummy2 {
   background-color: #a0a0a0;
   position: absolute;
-  width: 110%;
-  transform: translateX(-2.5%) translateY(370%);
-  height: 8rem;
+  width: 105%;
+  transform: translateX(-2.5%) translateY(415%);
+  height: 6.5rem;
   border-radius: 10px;
   z-index: 1;
 }

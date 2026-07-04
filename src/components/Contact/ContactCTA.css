@@ -8,18 +8,17 @@
   align-items: center;
   width: 100%;
   height: 100vh;
-  margin-top: 20vh;
 }
 
 .contact-cta h2 {
-  width: 70%;
+  width: 90%;
   text-align: center;
   font-family: "Satoshi";
-  font-size: clamp(2rem, 3.5vw, 3.5rem);
+  font-size: clamp(1rem, 2.5vw, 2.5rem);
   font-weight: 700;
   line-height: 1.08;
   letter-spacing: -0.025em;
-  margin-top: 5vh;
+  margin-top: 3vh;
 }
 
 .contact-cta .end-wrapper {
@@ -27,20 +26,21 @@
   display: flex;
   align-items: center;
   gap: 0.3rem;
+  margin-top: -5px;
 }
 
 .contact-cta span:not(.question span) {
   text-align: center;
   font-family: "Satoshi";
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: 0.05em;
-  font-size: 1.3rem;
+  font-size: 1rem;
 }
 
 .contact-cta p {
   font-family: "Satoshi";
-  font-weight: 700;
-  font-size: 1.3rem;
+  font-weight: 500;
+  font-size: 1rem;
 }
 
 .lets-chat {
@@ -50,11 +50,11 @@
   align-items: center;
   border: 3.5px solid #f2f0ef;
   border-radius: 999px;
-  height: 4.5rem;
-  width: 14rem;
+  height: 3.5rem;
+  width: 12rem;
   color: #f2f0ef;
   background: transparent;
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-family: "Satoshi";
   overflow: hidden;
   cursor: pointer;
@@ -97,7 +97,7 @@
 .question span {
   color: #6b6560;
   font-family: "supreme";
-  font-size: 1.35rem;
+  font-size: 0.8rem;
   font-weight: 400;
   letter-spacing: 0.05rem;
 }
@@ -106,7 +106,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 50%;
+  width: 35%;
   margin-top: 3.5vh;
 }
 
@@ -130,15 +130,15 @@
 }
 
 .github .logo {
-  height: 60px;
+  height: 32px;
 }
 
 .linkedIn .logo {
-  height: 80px;
+  height: 45px;
 }
 
 .mail .logo {
-  height: 110px;
+  height: 60px;
 }
 
 .logo.hover {

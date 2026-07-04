@@ -6,8 +6,8 @@ import "./Links.css";
 const Links = () => {
   return (
     <div className="AboutLinks">
-      <h6 className="chat-btn">
-        <span>LET'S CHAT</span>
+      <h6 className="resume-btn">
+        <span>VIEW RESUME</span>
       </h6>
 
       <div className="eyebrow">
@@ -18,21 +18,21 @@ const Links = () => {
 
       <div className="about-links">
 
-        <a href="https://www.github.com/kashyap-devansh" className="social-link github" target="_black">
-          <div className="logo-wrapper">
-            <img src={GithubGray} alt="Github" className="logo" />
+        <a href="https://www.github.com/kashyap-devansh" className="social-link github-link" target="_black">
+          <div className="links-wrapper">
+            <img src={GithubGray} alt="Github" className="link" />
           </div>
         </a>
 
-        <a href="/" className="social-link linkedIn" target="_blank">
-          <div className="logo-wrapper">
-            <img src={LinkedInGray} alt="LinkedIn" className="logo" />
+        <a href="/" className="social-link linkedIn-link" target="_blank">
+          <div className="links-wrapper">
+            <img src={LinkedInGray} alt="LinkedIn" className="link" />
           </div>
         </a>
 
-        <a href="/" className="social-link mail" target="_blank">
-          <div className="logo-wrapper">
-            <img src={GmailGray} alt="LinkedIn" className="logo" />
+        <a href="/" className="social-link mail-link" target="_blank">
+          <div className="links-wrapper">
+            <img src={GmailGray} alt="LinkedIn" className="link" />
           </div>
         </a>
 

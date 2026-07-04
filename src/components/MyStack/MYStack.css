@@ -18,7 +18,7 @@
   align-items: center;
   justify-content: center;
   color: #f2f0ef;
-  font-size: 18rem;
+  font-size: 14.5rem;
   margin-top: -20rem;
   font-family: "Satoshi";
   font-weight: 900;
@@ -29,12 +29,12 @@
   color: #6b6560;
   font-family: "Supreme";
   display: flex;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   align-items: center;
   justify-content: space-evenly;
   letter-spacing: 2px;
   font-weight: 500;
-  margin-top: -5rem;
+  margin-top: -4rem;
 }
 
 .stack-flex {
@@ -48,22 +48,22 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-radius: 6%;
+  border-radius: 1.5rem;
   width: 20%;
   margin-top: -5%;
 }
 
 .tech-title {
   font-family: "Pilcrow Rounded";
-  font-size: 3.5rem;
+  font-size: 3rem;
   width: 90%;
   text-align: center;
-  border-bottom: 3px solid #000000;
+  border-bottom: 2px solid #000000;
 }
 
 .tech-image img {
-  height: 15vh;
-  margin-bottom: 40%;
+  height: 12vh;
+  margin: 50% 0;
 }
 
 .tech-tags {
@@ -72,14 +72,16 @@
   justify-content: space-evenly;
   align-items: center;
   overflow: hidden;
+  padding-top: 1rem;
+  border-top: 1px solid #000000;
 }
 
 .tech-tag {
   text-align: center;
-  padding-left: 2.5%;
-  padding-right: 2.5%;
+  padding-left: 2%;
+  padding-right: 2%;
   font-family: "Supreme";
-  font-size: 1.7rem;
+  font-size: 1.2rem;
   font-weight: 500;
   letter-spacing: 0.03rem;
   border: 3px solid #cfcfcf;

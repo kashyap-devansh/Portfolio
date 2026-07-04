@@ -8,24 +8,24 @@
   align-items: center;
 }
 
-.chat-btn {
+.resume-btn {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   border: 3.5px solid #000000;
   border-radius: 999px;
-  height: 4.5rem;
-  width: 14rem;
+  height: 3rem;
+  width: 10rem;
   background: transparent;
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-family: "Satoshi";
   overflow: hidden;
   cursor: pointer;
   transition: color 0.3s ease;
 }
 
-.chat-btn::before {
+.resume-btn::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -37,16 +37,16 @@
   transition: transform 0.3s ease;
 }
 
-.chat-btn span {
+.resume-btn span {
   position: relative;
   z-index: 1;
 }
 
-.chat-btn:hover::before {
+.resume-btn:hover::before {
   transform: scaleY(1);
 }
 
-.chat-btn:hover {
+.resume-btn:hover {
   color: #f2f0ef;
 }
 
@@ -61,7 +61,7 @@
 .eyebrow span {
   color: #6b6560;
   font-family: "supreme";
-  font-size: 1.35rem;
+  font-size: 1rem;
   font-weight: 400;
   letter-spacing: 0.05rem;
 }
@@ -70,7 +70,7 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  width: 70%;
+  width: 50%;
   margin-top: 3.5vh;
 }
 
@@ -78,7 +78,7 @@
   text-decoration: none;
 }
 
-.logo-wrapper {
+.links-wrapper {
   position: relative;
   height: auto;
   display: flex;
@@ -88,29 +88,29 @@
   transition: transform 0.3s ease;
 }
 
-.logo-wrapper {
+.links-wrapper {
   transform: scale(1.1);
 }
 
-.logo {
+.link {
   display: block;
   width: auto;
   height: auto;
   transition: transform 0.3s ease;
 }
 
-.logo:hover {
+.link:hover {
   transform: scale(1.1);
 }
 
-.github .logo {
-  height: 60px;
+.github-link .link {
+  height: 35px;
 }
 
-.linkedIn .logo {
-  height: 80px;
+.linkedIn-link .link {
+  height: 45px;
 }
 
-.mail .logo {
-  height: 110px;
+.mail-link .link {
+  height: 70px;
 }
