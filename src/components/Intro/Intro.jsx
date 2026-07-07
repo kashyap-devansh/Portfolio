@@ -1,26 +1,69 @@
 import "./Intro.css";
-import PortfolioImage from "../../assets/portfolio_image.png"
+import { motion } from "framer-motion";
+import PortfolioImage from "../../assets/portfolio_image.png";
+
+const container = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.25,
+    },
+  },
+};
+
+const item = {
+  hidden: {
+    opacity: 0,
+    y: 20,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.7,
+      ease: "easeOut",
+    },
+  },
+};
 
 const Intro = () => {
   return (
     <section className="intro">
       <span className="intro-label">INTRO</span>
 
-      <div className="intro-content">
-        <h2>
-          I am a developer passionate about building software from the ground
-          up. From creating an interpreted programming language and a SQL-like
-          database engine to experimenting with developer tools and web
-          applications, I enjoy turning ideas into working systems.
-        </h2>
+      <motion.div
+        className="intro-content"
+        variants={container}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        <motion.h2 variants={item}>
+          I am a developer passionate about building software from the ground up
+        </motion.h2>
 
-        <h2>
+        <motion.h2 variants={item}>
+          . From creating an interpreted programming language and a SQL-like
+          database engine to experimenting with developer
+        </motion.h2>
+
+        <motion.h2 variants={item}>
+          tools and web applications, I enjoy turning ideas into working systems.
+        </motion.h2>
+
+        <motion.h2 variants={item}>
           My goal is to master the foundations of software engineering and
-          build technology that is efficient, reliable, and crafted with a deep
-          understanding of how it works behind the scenes.
-        </h2>
+        </motion.h2>
 
-        <div className="author">
+        <motion.h2 variants={item}>
+          build technology that is efficient, reliable, and crafted with a deep
+        </motion.h2>
+
+        <motion.h2 variants={item}>
+          understanding of how it works behind the scenes.
+        </motion.h2>
+
+        <motion.div className="author" variants={item}>
           <div className="author-img-wrapper">
             <img src={PortfolioImage} alt="Devansh Kashyap" />
           </div>
@@ -28,21 +71,28 @@ const Intro = () => {
           <div className="author-info">
             <span>DEVANSH KASHYAP</span>
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
-      <div className="work-heading">
-        <h1>
+      <motion.div
+        className="work-heading"
+        variants={container}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        <motion.h1 variants={item}>
           selected work
-        </h1>
+        </motion.h1>
 
-        <div className="tags">
-          <span>systems programming</span>
-          <span>language desgin</span>
-          <span>backend engineering</span>
-          <span>web development</span>
-        </div>
-      </div>
+        <motion.div className="tags" variants={container}>
+          <motion.span variants={item}>systems programming</motion.span>
+          <motion.span variants={item}>language design</motion.span>
+          <motion.span variants={item}>backend engineering</motion.span>
+          <motion.span variants={item}>web development</motion.span>
+        </motion.div>
+      </motion.div>
+
     </section>
   );
 };

@@ -17,13 +17,20 @@ import AboutMe from "./pages/AboutMe/AboutMe.jsx";
 import Projects from "./pages/Projects/Projects.jsx";
 
 const App = () => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(() => {
+    return !sessionStorage.getItem("loaderShown");
+  });
+
+  const handleLoadingFinish = () => {
+    sessionStorage.setItem("loaderShown", "true");
+    setLoading(false);
+  };
 
   return (
     <>
       {loading && (
         <LoadingScreen
-          onFinish={() => setLoading(false)}
+          onFinish={handleLoadingFinish}
         />
       )}
 
