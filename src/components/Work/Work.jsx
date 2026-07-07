@@ -1,6 +1,6 @@
+import { motion } from "framer-motion";
 import "./Work.css";
 import image from "../../assets/portfolio_image.png"
-
 
 const projects = [
   {
@@ -35,7 +35,26 @@ const Work = () => {
       <div className="work-grid">
         {
           projects.map((project) => (
-            <div className="work-card" key={project.id}>
+            <motion.div
+              className="work-card"
+              key={project.id}
+              initial={{
+                opacity: 0,
+                y: 40,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              transition={{
+                duration: 0.7,
+                ease: "easeOut",
+              }}
+              viewport={{
+                once: true,
+                amount: 0.3,
+              }}
+            >
               <div className="work-image">
 
                 <img src={project.image} alt={project.title} />
@@ -52,8 +71,27 @@ const Work = () => {
 
               </div>
 
-              <h2 className="work-title">{project.title}</h2>
-            </div>
+              <h2
+                className="work-title"
+                initial={{
+                  opacity: 0,
+                  y: 40,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                transition={{
+                  duration: 0.7,
+                  ease: "easeOut",
+                }}
+                viewport={{
+                  once: true,
+                  amount: 0.3,
+                }}
+
+              >{project.title}</h2>
+            </motion.div>
           ))
         }
       </div>
