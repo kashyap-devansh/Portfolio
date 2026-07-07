@@ -14,6 +14,7 @@ import LoadingScreen from "./components/LoadingScreen/LoadingScreen.jsx";
 
 import { Routes, Route } from "react-router-dom";
 import AboutMe from "./pages/AboutMe/AboutMe.jsx";
+import Projects from "./pages/Projects/Projects.jsx";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -55,6 +56,17 @@ const App = () => {
               <>
                 <Navbar loading={loading} />
                 <AboutMe />
+              </>
+            }
+          />
+
+          <Route
+            path="/projects"
+            element={
+              <>
+                <Navbar loading={loading} />
+                <Projects />
+                <Footer />
               </>
             }
           />

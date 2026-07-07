@@ -4,7 +4,7 @@ const OutSideOfCode = () => {
   return (
     <div className="outSideOfCode">
       <div className="outSideOfCode-content">
-        <p>outSideOfCode</p>
+        <p>outSide Of Code</p>
 
         <div className="info">
           <div className="info-item">

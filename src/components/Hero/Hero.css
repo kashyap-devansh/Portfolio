@@ -1,7 +1,7 @@
 .hero {
   position: relative;
   width: 100%;
-  min-height: 110dvh;
+  min-height: 110svh;
   background: #050505;
   overflow: visible;
   z-index: 1;
@@ -9,41 +9,31 @@
 
 .hero-image {
   position: absolute;
-  left: 50%;
   bottom: 0;
-
-  transform: translateX(-50%);
-
   width: 100%;
+  max-width: 100%;
   height: auto;
-
   z-index: 10;
   pointer-events: none;
 }
 
 .hero-content {
-  position: relative;
+  position: fixed;
+  inset: 0;
   z-index: 1000;
-
   width: 100%;
-  min-height: 100dvh;
-
+  min-height: 100svh;
   padding: 0 5vw;
   box-sizing: border-box;
-  position: fixed;
 }
 
 .hero h1 {
   font-family: "Geist Mono", monospace;
-
   color: #fff;
-
-  font-size: clamp(10rem, 30vw, 20rem);
+  font-size: clamp(7rem, 17vw, 21rem);
   font-weight: 900;
-
   line-height: 0.88;
   letter-spacing: 0;
-
   text-align: center;
   margin-bottom: 3rem;
   margin-top: 10rem;
@@ -51,7 +41,7 @@
 
 .hero-subtitle {
   margin-left: clamp(2rem, 20vw, 25rem);
-  margin-top: -2rem;
+  margin-top: -2vh;
   overflow: hidden;
 }
 
@@ -59,5 +49,5 @@
   color: #b5b5b5;
   font-family: sans-serif;
   font-weight: 600;
-  font-size: 2.5rem;
+  font-size: clamp(1.2rem, 2.1vw, 2.5rem);
 }
