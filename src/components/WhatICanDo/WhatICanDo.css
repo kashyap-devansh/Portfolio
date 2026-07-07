@@ -19,7 +19,7 @@
   margin: 10rem 0 0 0;
 }
 
-.experties {
+.expertise {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -27,19 +27,47 @@
   padding-top: 5rem;
 }
 
-.experties h1 {
+.roll-heading {
+  position: relative;
+  height: 4.5rem;
+  overflow: hidden;
+  cursor: pointer;
+
+  perspective: 1200px;
+}
+
+.roll-heading span {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+
   font-family: "Satoshi";
   font-size: 4rem;
-  margin: 0;
+  font-weight: 700;
   line-height: 1.1;
-  transition: color 0.3s ease;
-  cursor: pointer;
+
+  transform-origin: center center;
+  backface-visibility: hidden;
+  will-change: transform;
 }
 
-.experties:hover h1 {
+.front {
+  color: white;
+}
+
+.back {
+  color: white;
+}
+
+.expertise:hover .roll-heading .front,
+.expertise:hover .roll-heading .back {
   color: #292929;
+  transition: color 0.3s ease;
 }
 
-.experties h1:hover {
+.expertise .roll-heading:hover .front,
+.expertise .roll-heading:hover .back {
   color: white;
 }
