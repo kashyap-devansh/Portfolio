@@ -39,15 +39,21 @@
 
 .intro-content h2 {
   margin: 0;
+
   font-family: "Satoshi";
+
   font-size: clamp(1.5rem, 2.5vw, 2.5rem);
   font-weight: 600;
   line-height: 1.2;
   letter-spacing: -0.05em;
 }
 
-.intro-content h2:nth-child(5) {
+.intro-content h2:nth-child(4) {
   margin-bottom: 3rem;
+}
+
+.intro-content h2:nth-child(n + 1):nth-child(-n + 3) {
+  display: inline;
 }
 
 .author {

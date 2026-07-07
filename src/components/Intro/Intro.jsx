@@ -39,16 +39,23 @@ const Intro = () => {
         viewport={{ once: true, amount: 0.3 }}
       >
         <motion.h2 variants={item}>
-          I am a developer passionate about building software from the ground up
+          I am a developer passionate about building software from the
         </motion.h2>
 
         <motion.h2 variants={item}>
-          . From creating an interpreted programming language and a SQL-like
-          database engine to experimenting with developer
+          ground up. From creating an interpreted programming language
         </motion.h2>
 
         <motion.h2 variants={item}>
-          tools and web applications, I enjoy turning ideas into working systems.
+          and a SQL-like database engine to experimenting with developer
+        </motion.h2>
+
+        <motion.h2 variants={item}>
+          tools and web applications, I enjoy turning ideas into working
+        </motion.h2>
+
+        <motion.h2 variants={item}>
+          systems.
         </motion.h2>
 
         <motion.h2 variants={item}>
