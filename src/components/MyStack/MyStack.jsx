@@ -5,7 +5,6 @@ import Langauges from "../../assets/languages.svg";
 import Frontend from "../../assets/frontend.svg";
 import Systems from "../../assets/systems.svg";
 import Interests from "../../assets/interests.svg";
-
 const Stack = [
   {
     id: 1,
@@ -32,7 +31,6 @@ const Stack = [
     tech: ["Systems", "Backend", "Languages"],
   },
 ];
-
 const container = {
   hidden: {},
   visible: {
@@ -41,7 +39,6 @@ const container = {
     },
   },
 };
-
 const item = {
   hidden: {
     opacity: 0,
@@ -56,7 +53,6 @@ const item = {
     },
   },
 };
-
 const CardContainer = {
   hidden: {},
   visible: {
@@ -65,7 +61,6 @@ const CardContainer = {
     },
   },
 };
-
 const Card = {
   hidden: {
     opacity: 0,
@@ -82,19 +77,18 @@ const Card = {
     },
   },
   hover: {
-    y: -30,
+    opacity: 1,
+    y: -12,
     scale: 1.1,
     transition: {
-      duration: 0.25,
+      duration: 0.3,
     },
   },
 };
-
 const MyStack = () => {
   return (
     <section className="my-stack">
       <img src={MyStackBG} alt="" className="my-stack-bg" />
-
       <motion.h1
         initial={{
           opacity: 0,
@@ -113,7 +107,6 @@ const MyStack = () => {
           amount: 0.7,
         }}
       >TECHNOLOGIES</motion.h1>
-
       <motion.div
         className="stack-keywords"
         variants={container}
@@ -126,7 +119,6 @@ const MyStack = () => {
         <motion.p variants={item}>OPTIMIZE</motion.p>
         <motion.p variants={item}>DEPLOY</motion.p>
       </motion.div>
-
       <motion.div
         className="stack-flex"
         variants={CardContainer}
@@ -142,11 +134,9 @@ const MyStack = () => {
             whileHover="hover"
           >
             <h2 className="tech-title">{stack.heading}</h2>
-
             <div className="tech-image">
               <img src={stack.svg} alt={stack.heading} />
             </div>
-
             <div className="tech-tags">
               {stack.tech.map((item, index) => (
                 <span key={index} className="tech-tag">
@@ -157,10 +147,7 @@ const MyStack = () => {
           </motion.div>
         ))}
       </motion.div>
-
-    </section>
+    </section >
   );
 };
-
 export default MyStack;
-
