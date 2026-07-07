@@ -1,4 +1,5 @@
 import "./MYStack.css"
+import { motion } from "framer-motion";
 import MyStackBG from "../../assets/MyStack_bg.png";
 import Langauges from "../../assets/languages.svg";
 import Frontend from "../../assets/frontend.svg";
@@ -32,23 +33,114 @@ const Stack = [
   },
 ];
 
+const container = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const item = {
+  hidden: {
+    opacity: 0,
+    y: 20,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut",
+    },
+  },
+};
+
+const CardContainer = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.35,
+    },
+  },
+};
+
+const Card = {
+  hidden: {
+    opacity: 0,
+    y: 80,
+    scale: 0.8,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.7,
+      ease: "easeOut",
+    },
+  },
+  hover: {
+    y: -30,
+    scale: 1.1,
+    transition: {
+      duration: 0.25,
+    },
+  },
+};
+
 const MyStack = () => {
   return (
     <section className="my-stack">
       <img src={MyStackBG} alt="" className="my-stack-bg" />
 
-      <h1>TECHNOLOGIES</h1>
+      <motion.h1
+        initial={{
+          opacity: 0,
+          y: 100,
+        }}
+        whileInView={{
+          opacity: 1,
+          y: 0,
+        }}
+        transition={{
+          duration: 0.5,
+          ease: "easeOut",
+        }}
+        viewport={{
+          once: true,
+          amount: 0.7,
+        }}
+      >TECHNOLOGIES</motion.h1>
 
-      <div className="stack-keywords">
-        <p>BUILD</p>
-        <p>CREATE</p>
-        <p>OPTIMIZE</p>
-        <p>DEPLOY</p>
-      </div>
+      <motion.div
+        className="stack-keywords"
+        variants={container}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 1 }}
+      >
+        <motion.p variants={item}>BUILD</motion.p>
+        <motion.p variants={item}>CREATE</motion.p>
+        <motion.p variants={item}>OPTIMIZE</motion.p>
+        <motion.p variants={item}>DEPLOY</motion.p>
+      </motion.div>
 
-      <div className="stack-flex">
+      <motion.div
+        className="stack-flex"
+        variants={CardContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+      >
         {Stack.map((stack) => (
-          <div className="tech-card" key={stack.id}>
+          <motion.div
+            className="tech-card"
+            key={stack.id}
+            variants={Card}
+            whileHover="hover"
+          >
             <h2 className="tech-title">{stack.heading}</h2>
 
             <div className="tech-image">
@@ -62,9 +154,9 @@ const MyStack = () => {
                 </span>
               ))}
             </div>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
 
     </section>
   );
