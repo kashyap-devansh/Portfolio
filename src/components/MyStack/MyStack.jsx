@@ -5,6 +5,7 @@ import Langauges from "../../assets/languages.svg";
 import Frontend from "../../assets/frontend.svg";
 import Systems from "../../assets/systems.svg";
 import Interests from "../../assets/interests.svg";
+
 const Stack = [
   {
     id: 1,
@@ -76,15 +77,8 @@ const Card = {
       ease: "easeOut",
     },
   },
-  hover: {
-    opacity: 1,
-    y: -12,
-    scale: 1.1,
-    transition: {
-      duration: 0.3,
-    },
-  },
 };
+
 const MyStack = () => {
   return (
     <section className="my-stack">
@@ -126,26 +120,35 @@ const MyStack = () => {
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
       >
-        {Stack.map((stack) => (
-          <motion.div
-            className="tech-card"
-            key={stack.id}
-            variants={Card}
-            whileHover="hover"
-          >
-            <h2 className="tech-title">{stack.heading}</h2>
-            <div className="tech-image">
-              <img src={stack.svg} alt={stack.heading} />
-            </div>
-            <div className="tech-tags">
-              {stack.tech.map((item, index) => (
-                <span key={index} className="tech-tag">
-                  {item}
-                </span>
-              ))}
-            </div>
-          </motion.div>
-        ))}
+        {
+          Stack.map((stack) => (
+            <motion.div
+              className="tech-card"
+              key={stack.id}
+              variants={Card}
+              whileHover={{
+                y: -12,
+                scale: 1.1,
+              }}
+              transition={{
+                duration: 0.3,
+                ease: "easeOut",
+              }}
+            >
+              <h2 className="tech-title">{stack.heading}</h2>
+              <div className="tech-image">
+                <img src={stack.svg} alt={stack.heading} />
+              </div>
+              <div className="tech-tags">
+                {stack.tech.map((item, index) => (
+                  <span key={index} className="tech-tag">
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          ))
+        }
       </motion.div>
     </section >
   );
