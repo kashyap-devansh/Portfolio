@@ -11,7 +11,7 @@ const container = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.7,
+      staggerChildren: 0.3,
     },
   },
 };
@@ -25,7 +25,7 @@ const item = {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.7,
+      duration: 1,
       ease: "easeOut",
     },
   },
@@ -44,7 +44,7 @@ const linkContainer = {
 const linkItem = {
   hidden: {
     opacity: 0,
-    y: 40,
+    y: 60,
   },
   visible: {
     opacity: 1,
@@ -74,7 +74,15 @@ const ContactCTA = () => {
       </motion.div>
 
       <motion.h2 variants={item}>
-        I am always open to new projects, meaningful collaborations, and technical discussions. If you have an opportunity in mind or just want to talk about programming, I would love to hear from you.
+        I am always open to new projects, meaningful collaborations, and technical discussions. If you
+      </motion.h2>
+
+      <motion.h2 variants={item}>
+        have an opportunity in mind or just want to talk about programming, I would love to hear from
+      </motion.h2>
+
+      <motion.h2 variants={item}>
+        you.
       </motion.h2>
 
       <motion.h6

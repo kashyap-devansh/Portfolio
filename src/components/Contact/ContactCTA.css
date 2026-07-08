@@ -18,7 +18,8 @@
   font-weight: 700;
   line-height: 1.08;
   letter-spacing: -0.025em;
-  margin-top: 3vh;
+  margin-bottom: 0;
+  margin-top: 0;
 }
 
 .contact-cta .end-wrapper {
@@ -27,6 +28,7 @@
   align-items: center;
   gap: 0.3rem;
   margin-top: -5px;
+  margin-bottom: 3vh;
 }
 
 .contact-cta span:not(.question span) {
@@ -59,6 +61,7 @@
   overflow: hidden;
   cursor: pointer;
   transition: color 0.3s ease;
+  margin-top: 7vh;
 }
 
 .lets-chat::before {
