@@ -11,7 +11,7 @@ const container = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.3,
+      staggerChildren: 0.7,
     },
   },
 };
@@ -26,6 +26,31 @@ const item = {
     y: 0,
     transition: {
       duration: 0.7,
+      ease: "easeOut",
+    },
+  },
+};
+
+const linkContainer = {
+  hidden: {},
+  visible: {
+    transition: {
+      delayChildren: 2.2,
+      staggerChildren: 0.3,
+    },
+  },
+};
+
+const linkItem = {
+  hidden: {
+    opacity: 0,
+    y: 40,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 1,
       ease: "easeOut",
     },
   },
@@ -68,11 +93,17 @@ const ContactCTA = () => {
         <span>ME?</span>
       </motion.div>
 
-      <div className="links">
+      <motion.div
+        className="links"
+        variants={linkContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 1 }}
+      >
 
         <motion.a
           href="https://www.github.com/kashyap-devansh" className="social-link github" target="_black"
-          variants={item}
+          variants={linkItem}
         >
           <div className="logo-wrapper">
             <img src={GithubGray} alt="Github" className="logo normal" />
@@ -82,7 +113,7 @@ const ContactCTA = () => {
 
         <motion.a
           href="/" className="social-link linkedIn" target="_blank"
-          variants={item}
+          variants={linkItem}
         >
           <div className="logo-wrapper">
             <img src={LinkedInGray} alt="LinkedIn" className="logo normal" />
@@ -92,7 +123,7 @@ const ContactCTA = () => {
 
         <motion.a
           href="/" className="social-link mail" target="_blank"
-          variants={item}
+          variants={linkItem}
         >
           <div className="logo-wrapper">
             <img src={GmailGray} alt="LinkedIn" className="logo normal" />
@@ -100,7 +131,7 @@ const ContactCTA = () => {
           </div>
         </motion.a>
 
-      </div>
+      </motion.div>
 
     </motion.div>
   )
