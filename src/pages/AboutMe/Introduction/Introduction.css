@@ -4,10 +4,9 @@
 .introduction {
   display: flex;
   align-items: center;
-  justify-content: center;
   width: 96%;
-  margin-left: 1.5%;
   padding: 8rem 0;
+  margin-left: 1.5%;
   border-bottom: 3px solid #a8a8a8;
 }
 
@@ -24,5 +23,7 @@
   font-family: "Satoshi";
   font-size: 3.8vh;
   font-weight: 700;
-  width: 80%;
+  width: 100%;
+  margin-top: 0;
+  margin-bottom: 0;
 }
