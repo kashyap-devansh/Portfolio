@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import "./Projects.css";
 import Background from "../../assets/projects_bg.png";
 import image from "../../assets/portfolio_image.png"
@@ -31,7 +32,7 @@ const projects = [
     id: 5,
     title: "Project Five",
     image: image,
-    tags: ["TAG, TAG"],
+    tags: ["TAG", "TAG"],
   }
 ];
 
@@ -40,7 +41,27 @@ const Projects = () => {
     <div className="projects">
       <img src={Background} alt="" />
 
-      <h1 className="projects-heading">/ll projects</h1>
+      <motion.h1
+        className="projects-heading"
+        initial={{
+          opacity: 0,
+          x: -200
+        }}
+        whileInView={{
+          opacity: 1,
+          x: 0
+        }}
+        transition={{
+          duration: 0.7,
+          ease: [0.25, 1, 0.5, 1]
+        }}
+        viewport={{
+          once: true,
+          amount: 0.5
+        }}
+      >
+        /ll projects
+      </motion.h1>
 
       <div className="total-projects">
         <h6>total</h6>
@@ -51,7 +72,22 @@ const Projects = () => {
       <div className="projects-grid">
         {
           projects.map((project) => (
-            <div className="projects-card" key={project.id}>
+            <motion.div
+              className="projects-card"
+              key={project.id}
+              initial={{
+                opacity: 0,
+                y: 60,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              transition={{
+                duration: 0.7,
+                ease: "easeOut",
+              }}
+            >
               <div className="projects-image">
 
                 <img src={project.image} alt={project.title} />
@@ -68,8 +104,28 @@ const Projects = () => {
 
               </div>
 
-              <h2 className="projects-title">{project.title}</h2>
-            </div>
+              <h2
+                className="projects-title"
+                initial={{
+                  opacity: 0,
+                  y: 40,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                transition={{
+                  duration: 0.7,
+                  ease: "easeOut",
+                }}
+                viewport={{
+                  once: true,
+                  amount: 0.3,
+                }}
+              >
+                {project.title}
+              </h2>
+            </motion.div>
           ))
         }
       </div>
