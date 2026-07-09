@@ -1,4 +1,4 @@
-import { defaultValueTypes, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import GithubGray from "../../../assets/github-gray.svg";
 import LinkedInGray from "../../../assets/linkedin-gray.svg";
 import GmailGray from "../../../assets/gmail-gray.svg";
