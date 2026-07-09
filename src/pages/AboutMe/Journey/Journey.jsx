@@ -1,20 +1,60 @@
+import { motion } from "framer-motion";
 import Background from "../../../assets/journey.png";
 import "./Journey.css";
+
+const container = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const item = {
+  hidden: {
+    opacity: 0,
+    y: 100,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      durations: 1,
+      ease: [0.25, 1, 0.5, 1],
+    },
+  },
+};
 
 const Journey = () => {
   return (
     <div className="journey">
       <img src={Background} alt="" className="bg" />
 
-      <div className="journey-content">
+      <motion.div
+        className="journey-content"
+        variants={container}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{
+          once: true,
+          amount: 0.3,
+        }}
+      >
 
         <section className="journey-section">
 
-          <div className="section-title">
+          <motion.div
+            className="section-title"
+            variants={item}
+          >
             <p>Engineering Experience</p>
-          </div>
+          </motion.div>
 
-          <div className="section-items">
+          <motion.div
+            className="section-items"
+            variants={item}
+          >
 
             <div className="journey-card">
               <span>01</span>
@@ -34,17 +74,23 @@ const Journey = () => {
               <span>+</span>
             </div>
 
-          </div>
+          </motion.div>
 
         </section>
 
         <section className="journey-section">
 
-          <div className="section-title">
+          <motion.div
+            className="section-title"
+            variants={item}
+          >
             <p>Learning Journey</p>
-          </div>
+          </motion.div>
 
-          <div className="section-items">
+          <motion.div
+            className="section-items"
+            variants={item}
+          >
 
             <div className="journey-card">
               <span>01</span>
@@ -64,17 +110,23 @@ const Journey = () => {
               <span>+</span>
             </div>
 
-          </div>
+          </motion.div>
 
         </section>
 
         <section className="journey-section">
 
-          <div className="section-title">
+          <motion.div
+            className="section-title"
+            variants={item}
+          >
             <p>Achievements</p>
-          </div>
+          </motion.div>
 
-          <div className="section-items">
+          <motion.div
+            className="section-items"
+            variants={item}
+          >
 
             <div className="journey-card">
               <span>01</span>
@@ -94,11 +146,11 @@ const Journey = () => {
               <span>+</span>
             </div>
 
-          </div>
+          </motion.div>
 
         </section>
 
-      </div>
+      </motion.div>
     </div>
   )
 }
