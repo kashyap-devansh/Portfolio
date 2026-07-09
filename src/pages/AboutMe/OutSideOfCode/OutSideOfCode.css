@@ -1,11 +1,16 @@
 @import url("https://api.fontshare.com/v2/css?f[]=supreme@300,400,500,700,900&display=swap");
 @import url("https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap");
 
-.outSideOfCode {
+.outSideOfCode:not(:last-child) {
   padding: 8rem 0;
   width: 96%;
   margin-left: 1.5%;
-  border-bottom: 3px solid #a8a8a8;
+}
+
+.background {
+  width: 100%;
+  height: auto;
+  margin-bottom: -0.3rem;
 }
 
 .outSideOfCode p {
@@ -74,4 +79,11 @@
 
 .anime {
   width: 70%;
+}
+
+.outSideOfCode img {
+  width: 120%;
+  height: auto;
+  margin-bottom: -8.5rem;
+  margin-left: 0;
 }
