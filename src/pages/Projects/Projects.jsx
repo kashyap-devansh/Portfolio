@@ -40,7 +40,7 @@ const projects = [
   }
 ];
 
-const Projects = () => {
+const Projects = ({ setCursorVariant }) => {
   return (
     <div className="projects">
       <img src={Background} alt="" />
@@ -94,7 +94,12 @@ const Projects = () => {
             >
               <div className="projects-image">
 
-                <img src={project.image} alt={project.title} />
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  onMouseEnter={() => setCursorVariant("view")}
+                  onMouseLeave={() => setCursorVariant("default")}
+                />
 
                 <div className="projects-tags">
                   {

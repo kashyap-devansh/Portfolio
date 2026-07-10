@@ -8,31 +8,31 @@ import UNO from "../../assets/UNO.png";
 const projects = [
   {
     id: 1,
-    title: "Project One",
+    title: "Ark SQL",
     image: Ark,
-    tags: ["TAG", "TAG"],
+    tags: ["SQL Engine", "Database"],
   },
   {
     id: 2,
-    title: "Project Two",
+    title: "Curio Language",
     image: Curio,
-    tags: ["TAG", "TAG"],
+    tags: ["Interpreter", "Language"],
   },
   {
     id: 3,
-    title: "Project Three",
+    title: "Scrive Editor",
     image: Scrive,
-    tags: ["TAG"],
+    tags: ["Text Editor", "Terminal"],
   },
   {
     id: 4,
-    title: "Project Four",
+    title: "UNO Game",
     image: UNO,
-    tags: ["TAG", "TAG"],
+    tags: ["Card Game", "OOP"],
   },
 ];
 
-const Work = () => {
+const Work = ({ setCursorVariant }) => {
   return (
     <section className="work">
       <div className="work-grid">
@@ -60,7 +60,12 @@ const Work = () => {
             >
               <div className="work-image">
 
-                <img src={project.image} alt={project.title} />
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  onMouseEnter={() => setCursorVariant("view")}
+                  onMouseLeave={() => setCursorVariant("default")}
+                />
 
                 <div className="work-tags">
                   {

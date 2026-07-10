@@ -31,8 +31,6 @@
   position: relative;
   height: 4.5rem;
   overflow: hidden;
-  cursor: pointer;
-
   perspective: 1200px;
 }
 

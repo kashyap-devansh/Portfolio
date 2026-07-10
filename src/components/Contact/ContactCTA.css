@@ -59,7 +59,6 @@
   font-size: 1rem;
   font-family: "Satoshi";
   overflow: hidden;
-  cursor: pointer;
   transition: color 0.3s ease;
   margin-top: 7vh;
 }

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 
+import Cursor from "./components/Cursor/Cursor.jsx";
 import Navbar from "./components/Navbar/Navbar.jsx";
 import Hero from "./components/Hero/Hero.jsx";
 import Intro from "./components/Intro/Intro.jsx";
@@ -26,6 +27,8 @@ const App = () => {
     setLoading(false);
   };
 
+  const [cursorVariant, setCursorVariant] = useState("default");
+
   return (
     <>
       {loading && (
@@ -33,6 +36,8 @@ const App = () => {
           onFinish={handleLoadingFinish}
         />
       )}
+
+      <Cursor variant={cursorVariant} />
 
       <motion.div
         initial={{ opacity: 0 }}
@@ -47,7 +52,7 @@ const App = () => {
                 <Navbar loading={loading} />
                 <Hero loading={loading} />
                 <Intro />
-                <Work />
+                <Work setCursorVariant={setCursorVariant} />
                 <MyStack />
                 <WhatICanDO />
                 <Contact />
@@ -72,7 +77,7 @@ const App = () => {
             element={
               <>
                 <Navbar loading={loading} />
-                <Projects />
+                <Projects setCursorVariant={setCursorVariant} />
                 <Footer />
               </>
             }
