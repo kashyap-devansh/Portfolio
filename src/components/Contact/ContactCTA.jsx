@@ -130,7 +130,7 @@ const ContactCTA = () => {
         </motion.a>
 
         <motion.a
-          href="/" className="social-link mail" target="_blank"
+          href="mailto:devansh14007@gmail.com" className="social-link mail"
           variants={linkItem}
         >
           <div className="logo-wrapper">

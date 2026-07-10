@@ -22,6 +22,11 @@
   color: #ffffff;
 }
 
+.home-link-logo span {
+  font-size: 1.2rem;
+  font-weight: 900;
+}
+
 .navbar-links {
   display: flex;
   width: 30%;
@@ -82,9 +87,8 @@
   align-items: center;
   padding: 0.5%;
   font-size: 1rem;
-  gap: 1rem;
+  gap: 0.5rem;
   background: transparent;
-  cursor: pointer;
   transition: color 0.4s ease;
   z-index: 1;
 }
@@ -108,6 +112,7 @@
 
 .resume:hover::before {
   transform: scaleY(1);
+  border-radius: 12px;
 }
 
 .resume:hover {
@@ -116,6 +121,7 @@
 
 .download {
   mix-blend-mode: difference;
+  height: 1.3rem;
 }
 
 .resume:hover {
