@@ -1,38 +1,42 @@
 import { motion } from "framer-motion";
 import "./Projects.css";
 import Background from "../../assets/projects_bg.png";
-import image from "../../assets/portfolio_image.png"
+import Ark from "../../assets/Ark.png";
+import Curio from "../../assets/Curio.png";
+import Scrive from "../../assets/Scrive.png";
+import UNO from "../../assets/UNO.png";
+import Ledger from "../../assets/Ledger.png";
 
 const projects = [
   {
     id: 1,
-    title: "Project One",
-    image: image,
-    tags: ["TAG", "TAG"],
+    title: "Ark SQL",
+    image: Ark,
+    tags: ["SQL Engine", "Database"],
   },
   {
     id: 2,
-    title: "Project Two",
-    image: image,
-    tags: ["TAG", "TAG"],
+    title: "Curio Language",
+    image: Curio,
+    tags: ["Interpreter", "Language"],
   },
   {
     id: 3,
-    title: "Project Three",
-    image: image,
-    tags: ["TAG"],
+    title: "Scrive Editor",
+    image: Scrive,
+    tags: ["Text Editor", "Terminal"],
   },
   {
     id: 4,
-    title: "Project Four",
-    image: image,
-    tags: ["TAG", "TAG"],
+    title: "UNO Game",
+    image: UNO,
+    tags: ["Card Game", "OPP"],
   },
   {
     id: 5,
-    title: "Project Five",
-    image: image,
-    tags: ["TAG", "TAG"],
+    title: "Ledger System",
+    image: Ledger,
+    tags: ["Inventory", "Management"],
   }
 ];
 
@@ -104,7 +108,7 @@ const Projects = () => {
 
               </div>
 
-              <h2
+              <motion.h2
                 className="projects-title"
                 initial={{
                   opacity: 0,
@@ -124,7 +128,7 @@ const Projects = () => {
                 }}
               >
                 {project.title}
-              </h2>
+              </motion.h2>
             </motion.div>
           ))
         }

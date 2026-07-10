@@ -1,4 +1,4 @@
-@import url("https://api.fontshare.com/v2/css?f[]=ranade@300,400,500,700,900&display=swap");
+@import url("https://api.fontshare.com/v2/css?f[]=supreme@300,400,500,700,900&display=swap");
 @import url("https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap");
 
 .projects {
@@ -42,7 +42,7 @@
   font-family: "Satoshi";
   font-size: 1rem;
   text-transform: uppercase;
-  color: #6b6560;
+  color: #d6d4d3;
   font-width: 900;
 }
 
@@ -87,14 +87,14 @@
 }
 
 .projects-tag {
-  background: rgba(0, 0, 0, 0.50);
+  background: rgba(255, 255, 255, 0.075);
   color: #f2f0ef;
   padding: 8px 14px;
   border-radius: 6px;
-  font-size: 0.8rem;
-  font-family: "Ranade";
+  font-size: 1.1rem;
+  font-family: "Supreme";
   letter-spacing: 1px;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .projects-title {

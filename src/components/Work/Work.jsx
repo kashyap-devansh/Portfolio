@@ -1,30 +1,33 @@
 import { motion } from "framer-motion";
 import "./Work.css";
-import image from "../../assets/portfolio_image.png"
+import Ark from "../../assets/Ark.png";
+import Curio from "../../assets/Curio.png";
+import Scrive from "../../assets/Scrive.png";
+import UNO from "../../assets/UNO.png";
 
 const projects = [
   {
     id: 1,
     title: "Project One",
-    image: image,
+    image: Ark,
     tags: ["TAG", "TAG"],
   },
   {
     id: 2,
     title: "Project Two",
-    image: image,
+    image: Curio,
     tags: ["TAG", "TAG"],
   },
   {
     id: 3,
     title: "Project Three",
-    image: image,
+    image: Scrive,
     tags: ["TAG"],
   },
   {
     id: 4,
     title: "Project Four",
-    image: image,
+    image: UNO,
     tags: ["TAG", "TAG"],
   },
 ];
@@ -71,7 +74,7 @@ const Work = () => {
 
               </div>
 
-              <h2
+              <motion.h2
                 className="work-title"
                 initial={{
                   opacity: 0,
@@ -90,7 +93,7 @@ const Work = () => {
                   amount: 0.3,
                 }}
 
-              >{project.title}</h2>
+              >{project.title}</motion.h2>
             </motion.div>
           ))
         }
