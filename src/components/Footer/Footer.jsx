@@ -12,13 +12,21 @@ const Footer = () => {
           <div className="footer-links">
             <a href="/">
               <span>[</span>
+              <span>HOME</span>
+              <span>]</span>
+            </a>
+
+          </div>
+          <div className="footer-links">
+            <a href="/about">
+              <span>[</span>
               <span>/BOUT ME</span>
               <span>]</span>
             </a>
           </div>
 
           <div className="footer-links">
-            <a href="/">
+            <a href="/projects">
               <span>[</span>
               <span>/ALL PROJECTS</span>
               <span>]</span>
@@ -35,7 +43,13 @@ const Footer = () => {
         </div>
 
         <div className="footer-links">
-          <a href="/">BACK TO TOP</a>
+          <a
+            onClick={() =>
+              window.scrollTo({ top: 0, behaviour: "smooth" })
+            }
+          >
+            BACK TO TOP
+          </a>
         </div>
 
       </div>

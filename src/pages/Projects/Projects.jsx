@@ -13,30 +13,35 @@ const projects = [
     title: "Ark SQL",
     image: Ark,
     tags: ["SQL Engine", "Database"],
+    link: "https://github.com/kashyap-devansh/Ark",
   },
   {
     id: 2,
     title: "Curio Language",
     image: Curio,
     tags: ["Interpreter", "Language"],
+    link: "https://github.com/kashyap-devansh/Curio",
   },
   {
     id: 3,
     title: "Scrive Editor",
     image: Scrive,
     tags: ["Text Editor", "Terminal"],
+    link: "https://github.com/kashyap-devansh/Scrive",
   },
   {
     id: 4,
     title: "UNO Game",
     image: UNO,
     tags: ["Card Game", "OPP"],
+    link: "https://github.com/kashyap-devansh/uno-engine",
   },
   {
     id: 5,
     title: "Ledger System",
     image: Ledger,
     tags: ["Inventory", "Management"],
+    link: "https://github.com/kashyap-devansh/Ledger"
   }
 ];
 
@@ -94,12 +99,14 @@ const Projects = ({ setCursorVariant }) => {
             >
               <div className="projects-image">
 
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  onMouseEnter={() => setCursorVariant("view")}
-                  onMouseLeave={() => setCursorVariant("default")}
-                />
+                <a href={project.link}>
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    onMouseEnter={() => setCursorVariant("view")}
+                    onMouseLeave={() => setCursorVariant("default")}
+                  />
+                </a>
 
                 <div className="projects-tags">
                   {
