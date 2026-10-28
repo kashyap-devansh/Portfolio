@@ -1,8 +1,3 @@
-import ark from "../assets/img/ark.webp";
-import curio from "../assets/img/curio.webp";
-import scrive from "../assets/img/scrive.webp";
-import uno from "../assets/img/uno.webp";
-import ledger from "../assets/img/ledger.webp";
 
 import C from "../assets/c.svg";
 import Cpp from "../assets/cplusplus.svg";
@@ -28,7 +23,7 @@ export const profile = {
   timeZone: "Asia/Kolkata",
 };
 
-// `hue` is lifted from each project's artwork and only shows on hover.
+// `hue` tints each project's coded cover and recording; it shows fully on hover.
 export const projects = [
   {
     id: "ark",
@@ -37,7 +32,6 @@ export const projects = [
     category: "Systems",
     lang: "C++",
     year: "2026",
-    image: ark,
     hue: "#d9a94a",
     tags: ["Database", "Parser", "C++"],
     summary:
@@ -52,7 +46,6 @@ export const projects = [
     category: "Languages",
     lang: "C",
     year: "2026",
-    image: curio,
     hue: "#e0485a",
     tags: ["Interpreter", "Tokenizer", "C"],
     summary:
@@ -67,7 +60,6 @@ export const projects = [
     category: "Tools",
     lang: "C++",
     year: "2026",
-    image: scrive,
     hue: "#b57be8",
     tags: ["Vim-like", "TUI", "C++"],
     summary:
@@ -82,7 +74,6 @@ export const projects = [
     category: "Games",
     lang: "C++",
     year: "2026",
-    image: uno,
     hue: "#5b84ff",
     tags: ["OOP", "Game State", "C++"],
     summary:
@@ -97,7 +88,6 @@ export const projects = [
     category: "Systems",
     lang: "C",
     year: "2026",
-    image: ledger,
     hue: "#3fc1d4",
     tags: ["CRUD", "File Storage", "C"],
     summary:

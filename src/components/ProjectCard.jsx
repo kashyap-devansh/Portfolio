@@ -1,15 +1,43 @@
-import { useRef } from "react";
-import { motion, useMotionValue, useScroll, useSpring, useTransform } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import {
+  motion,
+  useInView,
+  useMotionValue,
+  useScroll,
+  useSpring,
+  useTransform,
+} from "framer-motion";
 import { Arrow, ease } from "./motion.jsx";
+import Cover from "./previews/Cover.jsx";
+import Recording from "./previews/Recording.jsx";
+import "./previews/previews.css";
+
+/* True on devices with a real hover (mouse / trackpad). */
+function useCanHover() {
+  const [can, setCan] = useState(() => window.matchMedia("(hover: hover)").matches);
+  useEffect(() => {
+    const mq = window.matchMedia("(hover: hover)");
+    const sync = () => setCan(mq.matches);
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
+  return can;
+}
 
 /*
-  Project tile: image parallaxes inside its frame while scrolling, tilts
-  toward the pointer, and the project's own hue draws a bar across the top.
+  Project tile: a coded cover that parallaxes while scrolling and tilts
+  toward the pointer. Hovering plays a screen recording of the program;
+  on touch screens it plays while the card is in view instead.
 */
 export default function ProjectCard({ project, index, large = false }) {
   const ref = useRef(null);
+  const [hovered, setHovered] = useState(false);
+  const canHover = useCanHover();
+  const inView = useInView(ref, { amount: 0.65 });
+  const playing = canHover ? hovered : inView;
+
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-  const imgY = useTransform(scrollYProgress, [0, 1], ["-7%", "7%"]);
+  const artY = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);
 
   const rx = useMotionValue(0);
   const ry = useMotionValue(0);
@@ -25,12 +53,13 @@ export default function ProjectCard({ project, index, large = false }) {
   const reset = () => {
     rx.set(0);
     ry.set(0);
+    setHovered(false);
   };
 
   return (
     <motion.article
       ref={ref}
-      className={`pcard ${large ? "pcard--large" : ""}`}
+      className={`pcard ${large ? "pcard--large" : ""} ${playing ? "is-playing" : ""}`}
       style={{ "--hue": project.hue }}
       initial={{ opacity: 0, y: 60 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -42,26 +71,18 @@ export default function ProjectCard({ project, index, large = false }) {
         target="_blank"
         rel="noreferrer"
         className="pcard__link"
+        aria-label={`${project.title} — ${project.kind} (opens GitHub)`}
         data-cursor="View"
+        onPointerEnter={(e) => e.pointerType === "mouse" && setHovered(true)}
         onPointerMove={onMove}
         onPointerLeave={reset}
+        onFocus={() => setHovered(true)}
+        onBlur={() => setHovered(false)}
       >
         <span className="pcard__bar" />
         <motion.div className="pcard__frame" style={{ rotateX: srx, rotateY: sry }}>
-          <motion.img
-            src={project.image}
-            alt={`${project.title} — ${project.kind}`}
-            loading="lazy"
-            decoding="async"
-            style={{ y: imgY }}
-          />
-          <div className="pcard__tags">
-            {project.tags.map((t) => (
-              <span key={t} className="pcard__tag hud-label">
-                {t}
-              </span>
-            ))}
-          </div>
+          <Cover project={project} index={index} artY={artY} />
+          <Recording project={project} playing={playing} />
         </motion.div>
 
         <div className="pcard__meta">

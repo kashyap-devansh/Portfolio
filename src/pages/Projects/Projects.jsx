@@ -2,6 +2,7 @@ import { useState } from "react";
 import { AnimatePresence, LayoutGroup, motion, useMotionValue, useSpring } from "framer-motion";
 import { projects } from "../../data/site.js";
 import ProjectCard from "../../components/ProjectCard.jsx";
+import Cover from "../../components/previews/Cover.jsx";
 import { Arrow, SplitWords, ease } from "../../components/motion.jsx";
 import "./Projects.css";
 
@@ -52,15 +53,16 @@ function ListView({ items }) {
       <motion.div className="plist__preview" style={{ x: sx, y: sy }} aria-hidden="true">
         <AnimatePresence>
           {hovered && (
-            <motion.img
+            <motion.div
               key={hovered.id}
-              src={hovered.image}
-              alt=""
+              className="plist__cover"
               initial={{ opacity: 0, scale: 0.85, clipPath: "inset(50% 0 50% 0)" }}
               animate={{ opacity: 1, scale: 1, clipPath: "inset(0% 0 0% 0)" }}
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.5, ease }}
-            />
+            >
+              <Cover project={hovered} index={items.indexOf(hovered)} />
+            </motion.div>
           )}
         </AnimatePresence>
       </motion.div>
@@ -156,6 +158,23 @@ export default function Projects() {
               {items.map((p, i) => (
                 <ProjectCard key={p.id} project={p} index={i} />
               ))}
+              {/* Fill the gap an odd count leaves in the two-column grid. */}
+              {items.length % 2 === 1 && (
+                <a
+                  href="https://github.com/kashyap-devansh"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="more-card invert-block"
+                >
+                  <span className="hud-label faint">Next</span>
+                  <span className="more-card__title display">
+                    More experiments <span className="serif">on GitHub.</span>
+                  </span>
+                  <span className="hud-label more-card__cta">
+                    github.com/kashyap-devansh <Arrow />
+                  </span>
+                </a>
+              )}
             </motion.div>
           ) : (
             <motion.div
