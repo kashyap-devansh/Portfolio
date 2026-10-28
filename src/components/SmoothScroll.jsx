@@ -34,6 +34,15 @@ export function scrollToTarget(target, { immediate = false } = {}) {
   }
 }
 
+/* Scroll to an absolute y position (used by the scroll ruler). */
+export function scrollToY(y, { immediate = false } = {}) {
+  if (lenis) {
+    lenis.scrollTo(y, { immediate, duration: 1.1, force: true });
+  } else {
+    window.scrollTo({ top: y, behavior: immediate ? "auto" : "smooth" });
+  }
+}
+
 export default function SmoothScroll() {
   // `key` changes on every navigation, so re-clicking "#contact" scrolls again.
   const { pathname, hash, key } = useLocation();

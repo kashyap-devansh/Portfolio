@@ -428,3 +428,171 @@
   letter-spacing: 0.06em;
   color: var(--accent);
 }
+
+/* ==========================================================================
+   Scroll ruler — replaces the native scrollbar on desktop
+   ========================================================================== */
+
+html[data-ruler] {
+  scrollbar-width: none;
+}
+
+html[data-ruler]::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+.ruler {
+  --p: 0;
+  position: fixed;
+  top: calc(var(--nav-h) + 18px);
+  bottom: 18px;
+  right: 0;
+  z-index: 900;
+  width: 44px;
+  cursor: ns-resize;
+  touch-action: none;
+  user-select: none;
+}
+
+.ruler__ticks {
+  position: absolute;
+  inset: 0;
+}
+
+.ruler__tick {
+  --s: 1;
+  position: absolute;
+  right: 8px;
+  width: 6px;
+  height: 1px;
+  background: var(--line-strong);
+  transform-origin: right center;
+  transform: scaleX(var(--s));
+  animation: ruler-in 0.9s var(--ease-out) both;
+}
+
+.ruler__tick.is-mid {
+  width: 10px;
+}
+
+.ruler__tick.is-major {
+  width: 16px;
+  background: var(--muted);
+}
+
+/* Major labels sit just left of their tick; counter-scale keeps text crisp. */
+.ruler__tick em {
+  position: absolute;
+  right: calc(100% + 6px);
+  top: 50%;
+  translate: 0 -50%;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-style: normal;
+  letter-spacing: 0.06em;
+  color: var(--faint);
+  transform: scaleX(calc(1 / var(--s)));
+  transform-origin: right center;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.ruler:hover .ruler__tick em,
+.ruler[data-dragging] .ruler__tick em {
+  opacity: 1;
+}
+
+@keyframes ruler-in {
+  from { transform: scaleX(0); opacity: 0; }
+}
+
+/* Section markers */
+.ruler__section {
+  position: absolute;
+  right: 0;
+  width: 26px;
+  height: 2px;
+  margin-top: -0.5px;
+  background: var(--accent);
+  opacity: 0.55;
+  transition: opacity 0.3s, width 0.4s var(--ease-out);
+}
+
+.ruler__section b {
+  position: absolute;
+  right: calc(100% + 34px);
+  top: 50%;
+  translate: 8px -50%;
+  padding: 3px 7px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--muted);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s, translate 0.4s var(--ease-out);
+}
+
+.ruler:hover .ruler__section,
+.ruler[data-dragging] .ruler__section {
+  opacity: 1;
+  width: 32px;
+}
+
+.ruler:hover .ruler__section b,
+.ruler[data-dragging] .ruler__section b {
+  opacity: 1;
+  translate: 0 -50%;
+}
+
+/* Needle + rolling readout */
+.ruler__needle {
+  position: absolute;
+  right: 0;
+  top: calc(var(--p) * 100%);
+  width: 34px;
+  height: 2px;
+  margin-top: -1px;
+  background: var(--accent);
+  box-shadow: 0 0 12px var(--accent);
+  pointer-events: none;
+}
+
+.ruler__readout {
+  position: absolute;
+  right: calc(100% + 6px);
+  top: 50%;
+  translate: 0 -50%;
+  display: inline-flex;
+  padding: 2px 5px;
+  background: var(--accent);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.ruler__digit {
+  display: inline-flex;
+  height: 1em;
+  overflow: hidden;
+}
+
+.ruler__digit-col {
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.28s cubic-bezier(0.2, 0.9, 0.2, 1);
+}
+
+.ruler__digit-col > span {
+  display: block;
+  height: 1em;
+}
