@@ -6,8 +6,6 @@ export const resume = {
   headline: "Software Developer — Systems · Languages · Web",
   contact: {
     email: "devansh14007@gmail.com",
-    // Shown in the downloaded PDF only, never on the public web page.
-    phone: "9315858470",
     github: "github.com/kashyap-devansh",
     portfolio: "devanshkashyap.vercel.app",
   },

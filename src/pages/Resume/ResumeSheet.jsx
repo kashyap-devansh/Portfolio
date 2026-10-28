@@ -24,12 +24,6 @@ export default function ResumeSheet({ links = true }) {
         <p className="cv__headline">{resume.headline}</p>
         <p className="cv__contact">
           <L href={`mailto:${contact.email}`}>{contact.email}</L>
-          {!links && (
-            <>
-              <i>•</i>
-              <span>{contact.phone}</span>
-            </>
-          )}
           <i>•</i>
           <L href={`https://${contact.github}`}>{contact.github}</L>
           <i>•</i>
