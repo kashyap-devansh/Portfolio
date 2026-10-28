@@ -1,91 +1,92 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { Link, Route, Routes, useLocation } from "react-router-dom";
+import { MotionConfig, motion } from "framer-motion";
 
-import Cursor from "./components/Cursor/Cursor.jsx";
-import Navbar from "./components/Navbar/Navbar.jsx";
-import Hero from "./components/Hero/Hero.jsx";
-import Intro from "./components/Intro/Intro.jsx";
-import WhatICanDO from "./components/WhatICanDo/WhatICanDo.jsx";
-import Work from "./components/Work/Work.jsx";
-import MyStack from "./components/MyStack/MyStack.jsx";
-import Contact from "./components/Contact/contact-Hero.jsx";
-import ContactCTA from "./components/Contact/ContactCTA.jsx";
-import Footer from "./components/Footer/Footer.jsx";
-import LoadingScreen from "./components/LoadingScreen/LoadingScreen.jsx";
-
-import { Routes, Route } from "react-router-dom";
-import AboutMe from "./pages/AboutMe/AboutMe.jsx";
+import Cursor from "./components/Cursor.jsx";
+import Navbar from "./components/Navbar.jsx";
+import Footer from "./components/Footer.jsx";
+import LoadingScreen from "./components/LoadingScreen.jsx";
+import SmoothScroll from "./components/SmoothScroll.jsx";
+import Home from "./pages/Home/Home.jsx";
+import About from "./pages/About/About.jsx";
 import Projects from "./pages/Projects/Projects.jsx";
+import "./components/chrome.css";
+import "./components/ProjectCard.css";
 
-const App = () => {
-  const [loading, setLoading] = useState(() => {
+function firstVisit() {
+  try {
     return !sessionStorage.getItem("loaderShown");
-  });
+  } catch {
+    return true;
+  }
+}
 
-  const handleLoadingFinish = () => {
-    sessionStorage.setItem("loaderShown", "true");
+function NotFound() {
+  return (
+    <section className="container section" style={{ minHeight: "80svh", paddingTop: "30vh" }}>
+      <p className="hud-label accent">404 — segmentation fault</p>
+      <h1 className="display display-xl" style={{ marginTop: 24 }}>
+        Nothing <span className="serif">here.</span>
+      </h1>
+      <Link to="/" className="btn btn--solid" style={{ marginTop: 40 }}>
+        Back to index
+      </Link>
+    </section>
+  );
+}
+
+export default function App() {
+  const [loading, setLoading] = useState(firstVisit);
+  const { pathname } = useLocation();
+
+  // Only sweep the curtain on real navigations, not right after the loader.
+  const [prevPath, setPrevPath] = useState(pathname);
+  const [navigated, setNavigated] = useState(false);
+  if (prevPath !== pathname) {
+    setPrevPath(pathname);
+    setNavigated(true);
+  }
+
+  const finish = () => {
+    try {
+      sessionStorage.setItem("loaderShown", "1");
+    } catch {
+      /* private mode — loader will just show again next visit */
+    }
     setLoading(false);
   };
 
-  const [cursorVariant, setCursorVariant] = useState("default");
+  const ready = !loading;
 
   return (
-    <>
-      {loading && (
-        <LoadingScreen
-          onFinish={handleLoadingFinish}
-        />
-      )}
+    <MotionConfig reducedMotion="user">
+      <SmoothScroll />
+      {loading && <LoadingScreen onFinish={finish} />}
+      <Cursor />
+      <div className="grain" aria-hidden="true" />
+      <Navbar ready={ready} />
 
-      <Cursor variant={cursorVariant} />
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: loading ? 0 : 1 }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-      >
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <Navbar loading={loading} />
-                <Hero loading={loading} />
-                <Intro />
-                <Work setCursorVariant={setCursorVariant} />
-                <MyStack />
-                <WhatICanDO />
-                <Contact />
-                <ContactCTA />
-                <Footer />
-              </>
-            }
+      {/* Keyed by route: each page enters behind a sweeping curtain. */}
+      <motion.div key={pathname}>
+        {navigated && (
+          <motion.div
+            className="curtain"
+            initial={{ scaleY: 1 }}
+            animate={{ scaleY: 0 }}
+            transition={{ duration: 0.8, ease: [0.83, 0, 0.17, 1] }}
+            style={{ originY: 0 }}
           />
-
-          <Route
-            path="/about"
-            element={
-              <>
-                <Navbar loading={loading} />
-                <AboutMe />
-              </>
-            }
-          />
-
-          <Route
-            path="/projects"
-            element={
-              <>
-                <Navbar loading={loading} />
-                <Projects setCursorVariant={setCursorVariant} />
-                <Footer />
-              </>
-            }
-          />
-        </Routes>
+        )}
+        <main>
+          <Routes>
+            <Route path="/" element={<Home ready={ready} />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </main>
+        <Footer />
       </motion.div>
-    </>
+    </MotionConfig>
   );
-};
-
-export default App;
+}

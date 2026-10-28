@@ -1,16 +1,23 @@
-# React + Vite
+# Devansh Kashyap — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Personal portfolio built with React, Vite, Framer Motion and Lenis.
 
-Currently, two official plugins are available:
+```bash
+npm install
+npm run dev     # local dev server
+npm run build   # production build in dist/
+```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Editing content
 
-## React Compiler
+All copy, projects, skills and links live in `src/data/site.js`.
+To add LinkedIn, set `profile.linkedin` there and it appears in the footer and contact section.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Design
 
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+- **Palette (60/30/10):** warm neutral surface, ink, and a single signal orange accent. Each project
+  also carries a hue lifted from its artwork that only appears on hover.
+- **Type:** Archivo (display), Instrument Serif italic (accents), Geist Mono (HUD labels).
+- **Themes:** dark by default with a light toggle in the navbar, remembered per browser.
+- **Motion:** masked word reveals, scroll-scrubbed text, parallax, magnetic buttons, and a live terminal.
+  All of it respects `prefers-reduced-motion`.
