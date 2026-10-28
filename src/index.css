@@ -27,8 +27,8 @@
   --accent: #ff5b1f;
   --accent-ink: #ff7a45;
   --accent-soft: rgba(255, 91, 31, 0.14);
-  --glow-a: rgba(255, 255, 255, 0.22);
-  --glow-b: rgba(255, 255, 255, 0.14);
+  --glow-a: rgba(255, 91, 31, 0.55);
+  --glow-b: rgba(255, 166, 61, 0.35);
   --ok: #3ddc84;
 
   --font-display: "Archivo", system-ui, sans-serif;
