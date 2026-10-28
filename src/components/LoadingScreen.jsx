@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 
 const greetings = [
   "Hello",
-  "नमस्ते",
   "Bonjour",
   "Hola",
   "こんにちは",
@@ -13,6 +12,7 @@ const greetings = [
   "Ciao",
   "Olá",
   "Привет",
+  "नमस्ते",
 ];
 
 const STEP = 190;
@@ -26,7 +26,8 @@ export default function LoadingScreen({ onFinish }) {
       setIndex((i) => {
         if (i >= greetings.length - 1) {
           clearInterval(id);
-          setTimeout(() => setExit(true), 260);
+          // Hold on the final "नमस्ते" so it can be read before the curtain lifts.
+          setTimeout(() => setExit(true), 700);
           return i;
         }
         return i + 1;
