@@ -1,0 +1,263 @@
+/* Page chrome */
+
+.resume-page {
+  padding-bottom: clamp(80px, 10vw, 140px);
+}
+
+.resume-hero {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(20px, 3vw, 32px);
+  padding-top: calc(var(--nav-h) + clamp(48px, 7vw, 104px));
+  padding-bottom: clamp(36px, 5vw, 64px);
+}
+
+.resume-hero__row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+}
+
+.resume-hero__title {
+  font-size: clamp(3rem, 10vw, 9.5rem);
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+}
+
+.resume-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.resume-stage {
+  display: flex;
+  justify-content: center;
+}
+
+/* ==========================================================================
+   The sheet — paper is always white, in both themes and in the PDF
+   ========================================================================== */
+
+.sheet-cv {
+  --cv-ink: #14141a;
+  --cv-muted: #55555e;
+  --cv-rule: #d9d7d2;
+  --cv-accent: #e2470c;
+  width: 100%;
+  max-width: 820px;
+  padding: 52px 56px;
+  background: #fff;
+  color: var(--cv-ink);
+  font-family: var(--font-display);
+  font-size: 12.5px;
+  line-height: 1.45;
+  box-shadow: 0 40px 80px -30px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(0, 0, 0, 0.05);
+  cursor: auto;
+}
+
+.sheet-cv a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--cv-accent) 55%, transparent);
+  text-underline-offset: 2px;
+  transition: color 0.2s;
+}
+
+.sheet-cv a:hover {
+  color: var(--cv-accent);
+}
+
+.cv__head {
+  text-align: center;
+}
+
+.cv__name {
+  font-size: 30px;
+  font-weight: 700;
+  font-stretch: 108%;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+
+.cv__headline {
+  margin-top: 4px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cv-accent);
+}
+
+.cv__contact {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px 10px;
+  margin-top: 8px;
+  font-size: 11.5px;
+  color: var(--cv-muted);
+}
+
+.cv__contact i,
+.cv__soft i {
+  font-style: normal;
+  color: var(--cv-rule);
+}
+
+.cv__summary {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 2px solid var(--cv-accent);
+  text-align: center;
+  font-size: 12px;
+  color: var(--cv-muted);
+}
+
+.cv__section {
+  margin-top: 14px;
+}
+
+.cv__section h2 {
+  margin-bottom: 6px;
+  padding-bottom: 3px;
+  border-bottom: 1px solid var(--cv-ink);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.cv__block + .cv__block {
+  margin-top: 7px;
+}
+
+.cv__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.cv__row strong {
+  font-weight: 600;
+}
+
+.cv__dash {
+  color: var(--cv-muted);
+  font-weight: 400;
+}
+
+.cv__meta {
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-style: normal;
+  color: var(--cv-muted);
+}
+
+em.cv__meta {
+  font-style: italic;
+}
+
+.cv__live {
+  color: var(--cv-accent) !important;
+  font-weight: 700;
+}
+
+.cv__skills {
+  margin: 0;
+}
+
+.cv__skills > div {
+  display: flex;
+  gap: 6px;
+}
+
+.cv__skills dt {
+  flex-shrink: 0;
+  font-weight: 600;
+}
+
+.cv__skills dd {
+  margin: 0;
+}
+
+.sheet-cv ul {
+  margin: 2px 0 0;
+  padding-left: 18px;
+}
+
+.sheet-cv li {
+  padding-left: 2px;
+}
+
+.sheet-cv li::marker {
+  color: var(--cv-accent);
+}
+
+.cv__soft {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+}
+
+.cv__soft span {
+  display: inline-flex;
+  gap: 10px;
+}
+
+@media (max-width: 640px) {
+  .sheet-cv {
+    padding: 28px 20px;
+    font-size: 13px;
+  }
+
+  .cv__name {
+    font-size: 24px;
+  }
+
+  .cv__row {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+
+/* ==========================================================================
+   PDF version — exact A4, nothing but the sheet
+   ========================================================================== */
+
+@page {
+  size: A4;
+  margin: 0;
+}
+
+html:has(.pdf-root),
+html:has(.pdf-root) body {
+  background: #fff;
+}
+
+/* Sized to land on exactly one A4 page. */
+.sheet-cv--pdf {
+  max-width: none;
+  width: 210mm;
+  height: 297mm;
+  overflow: hidden;
+  padding: 12mm 15mm 10mm;
+  font-size: 12px;
+  line-height: 1.42;
+  box-shadow: none;
+}
+
+.sheet-cv--pdf .cv__section {
+  margin-top: 12px;
+}
+
+.sheet-cv--pdf .cv__summary {
+  margin-top: 10px;
+  padding-top: 10px;
+}

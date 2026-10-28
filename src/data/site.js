@@ -5,7 +5,7 @@ import schoolDark from "../assets/img/school-dark.webp";
 import universityDark from "../assets/img/university-dark.webp";
 import C from "../assets/c.svg";
 import Cpp from "../assets/cplusplus.svg";
-import Arch from "../assets/archlinux.svg";
+import Omarchy from "../assets/omarchy.svg";
 import CSS from "../assets/css.svg";
 import Git from "../assets/git.svg";
 import GitHub from "../assets/github.svg";
@@ -135,7 +135,7 @@ export const capabilities = [
   },
   {
     title: "Linux & Open Source",
-    body: "Daily-driving Arch, living in Neovim and the terminal, and publishing everything I build in the open.",
+    body: "Daily-driving Omarchy, living in Neovim and the terminal, and publishing everything I build in the open.",
   },
 ];
 
@@ -153,7 +153,7 @@ export const tools = [
   { name: "HTML5", icon: HTML },
   { name: "CSS3", icon: CSS },
   { name: "React", icon: ReactLogo },
-  { name: "Arch Linux", icon: Arch },
+  { name: "Omarchy", icon: Omarchy },
   { name: "Bash", icon: Bash },
   { name: "Git", icon: Git },
   { name: "GitHub", icon: GitHub },

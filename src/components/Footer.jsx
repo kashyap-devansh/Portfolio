@@ -31,6 +31,7 @@ export default function Footer() {
             <Link to="/" className="link-u">Index</Link>
             <Link to="/projects" className="link-u">All projects</Link>
             <Link to="/about" className="link-u">About me</Link>
+            <Link to="/resume" className="link-u">Resume</Link>
             <Link to="/#contact" className="link-u">Contact</Link>
           </div>
 

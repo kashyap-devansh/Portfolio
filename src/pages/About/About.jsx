@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import { Link } from "react-router-dom";
 import {
   backstory,
   education,
@@ -79,6 +80,11 @@ function Hero() {
             <a href={profile.github} target="_blank" rel="noreferrer" className="btn btn--solid">
               GitHub <Arrow />
             </a>
+          </Magnetic>
+          <Magnetic>
+            <Link to="/resume" className="btn btn--line">
+              Resume
+            </Link>
           </Magnetic>
           <Magnetic>
             <a href={`mailto:${profile.email}`} className="btn btn--line">

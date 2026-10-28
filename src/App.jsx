@@ -10,6 +10,9 @@ import SmoothScroll from "./components/SmoothScroll.jsx";
 import Home from "./pages/Home/Home.jsx";
 import About from "./pages/About/About.jsx";
 import Projects from "./pages/Projects/Projects.jsx";
+import Resume from "./pages/Resume/Resume.jsx";
+import ResumeSheet from "./pages/Resume/ResumeSheet.jsx";
+import "./pages/Resume/Resume.css";
 import "./components/chrome.css";
 import "./components/ProjectCard.css";
 
@@ -36,8 +39,10 @@ function NotFound() {
 }
 
 export default function App() {
-  const [loading, setLoading] = useState(firstVisit);
-  const { pathname } = useLocation();
+  const { pathname, search } = useLocation();
+  // `/resume?pdf` is what the PDF is printed from: the bare sheet, no links.
+  const pdfMode = pathname === "/resume" && new URLSearchParams(search).has("pdf");
+  const [loading, setLoading] = useState(() => !pdfMode && firstVisit());
 
   // Only sweep the curtain on real navigations, not right after the loader.
   const [prevPath, setPrevPath] = useState(pathname);
@@ -57,6 +62,14 @@ export default function App() {
   };
 
   const ready = !loading;
+
+  if (pdfMode) {
+    return (
+      <div className="pdf-root">
+        <ResumeSheet links={false} />
+      </div>
+    );
+  }
 
   return (
     <MotionConfig reducedMotion="user">
@@ -82,6 +95,7 @@ export default function App() {
             <Route path="/" element={<Home ready={ready} />} />
             <Route path="/about" element={<About />} />
             <Route path="/projects" element={<Projects />} />
+            <Route path="/resume" element={<Resume />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
