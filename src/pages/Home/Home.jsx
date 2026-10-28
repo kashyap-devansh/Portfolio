@@ -22,6 +22,7 @@ import {
   ease,
 } from "../../components/motion.jsx";
 import ProjectCard from "../../components/ProjectCard.jsx";
+import MoreCard from "../../components/MoreCard.jsx";
 import Terminal from "./Terminal.jsx";
 import portrait from "../../assets/img/portrait.webp";
 import cutout from "../../assets/img/cutout.webp";
@@ -145,13 +146,14 @@ function Ticker() {
 
 function Work() {
   const featured = projects.filter((p) => p.featured);
+  const count = ["Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight"][featured.length] ?? featured.length;
   return (
     <section id="work" className="section">
       <div className="container">
         <SectionHead
           num="01"
           label="Selected work"
-          title={[["Four systems,"], ["zero shortcuts.", "serif"]]}
+          title={[[`${count} builds,`], ["zero shortcuts.", "serif"]]}
           aside={
             <Link to="/projects" className="btn btn--line">
               All projects ({String(projects.length).padStart(2, "0")}) <Arrow />
@@ -164,6 +166,7 @@ function Work() {
           {featured.map((p, i) => (
             <ProjectCard key={p.id} project={p} index={i} />
           ))}
+          {featured.length % 2 === 1 && <MoreCard to="/projects" />}
         </div>
       </div>
     </section>

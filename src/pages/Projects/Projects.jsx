@@ -3,6 +3,7 @@ import { AnimatePresence, LayoutGroup, motion, useMotionValue, useSpring } from 
 import { projects } from "../../data/site.js";
 import ProjectCard from "../../components/ProjectCard.jsx";
 import Cover from "../../components/previews/Cover.jsx";
+import MoreCard from "../../components/MoreCard.jsx";
 import { Arrow, SplitWords, ease } from "../../components/motion.jsx";
 import "./Projects.css";
 
@@ -158,23 +159,7 @@ export default function Projects() {
               {items.map((p, i) => (
                 <ProjectCard key={p.id} project={p} index={i} />
               ))}
-              {/* Fill the gap an odd count leaves in the two-column grid. */}
-              {items.length % 2 === 1 && (
-                <a
-                  href="https://github.com/kashyap-devansh"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="more-card invert-block"
-                >
-                  <span className="hud-label faint">Next</span>
-                  <span className="more-card__title display">
-                    More experiments <span className="serif">on GitHub.</span>
-                  </span>
-                  <span className="hud-label more-card__cta">
-                    github.com/kashyap-devansh <Arrow />
-                  </span>
-                </a>
-              )}
+              {items.length % 2 === 1 && <MoreCard />}
             </motion.div>
           ) : (
             <motion.div

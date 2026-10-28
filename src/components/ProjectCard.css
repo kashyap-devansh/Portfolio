@@ -1,5 +1,7 @@
 .pcard {
   --hue: var(--accent);
+  display: flex;
+  flex-direction: column;
   background: var(--bg);
 }
 
@@ -7,7 +9,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  flex: 1;
   padding: clamp(14px, 1.6vw, 24px);
   perspective: 1200px;
 }
@@ -129,5 +131,31 @@
 
   .pcard__num {
     display: none;
+  }
+}
+
+/* Live demo link, aligned under the summary */
+.pcard__live {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 clamp(14px, 1.6vw, 24px) clamp(14px, 1.6vw, 24px);
+  margin-left: calc(clamp(14px, 1.6vw, 24px) + 34px);
+  padding: 8px 12px;
+  border: 1px solid var(--line-strong);
+  color: var(--ink);
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.pcard__live:hover {
+  background: var(--hue);
+  border-color: var(--hue);
+  color: #0f0f11;
+}
+
+@media (max-width: 560px) {
+  .pcard__live {
+    margin-left: clamp(14px, 1.6vw, 24px);
   }
 }

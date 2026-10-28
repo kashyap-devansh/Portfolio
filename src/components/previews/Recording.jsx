@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { scripts } from "./scripts.js";
+import DsaApp from "./DsaApp.jsx";
 
 const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -178,6 +179,8 @@ export default function Recording({ project, playing }) {
           <Editor data={screen.data} />
         ) : screen?.kind === "tui" ? (
           <Tui data={screen.data} />
+        ) : screen?.kind === "dsa" ? (
+          <DsaApp {...screen.data} playing />
         ) : (
           <pre className="rec__log">
             {log.map((l, i) =>

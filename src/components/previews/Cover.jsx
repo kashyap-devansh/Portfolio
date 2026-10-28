@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import DsaApp, { selectionSortFrames } from "./DsaApp.jsx";
 
 /*
   Static project artwork drawn in code. Every cover shares one frame —
@@ -69,7 +70,18 @@ function UnoMotif() {
   );
 }
 
+// A paused frame of the real Selection Sort page, mid-pass.
+const dsaFrames = selectionSortFrames();
+const DSA_STILL = 54;
+
 const covers = {
+  dsa: {
+    glyph: (
+      <div className="cover__app">
+        <DsaApp frame={dsaFrames[DSA_STILL]} step={DSA_STILL + 1} total={dsaFrames.length} />
+      </div>
+    ),
+  },
   ark: {
     motif: <ArkMotif />,
     chips: [

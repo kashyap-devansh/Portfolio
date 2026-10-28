@@ -98,6 +98,11 @@ export default function ProjectCard({ project, index, large = false }) {
           </span>
         </div>
       </a>
+      {project.live && (
+        <a href={project.live} target="_blank" rel="noreferrer" className="pcard__live hud-label">
+          <span className="pulse-dot" /> Live demo ↗
+        </a>
+      )}
     </motion.article>
   );
 }

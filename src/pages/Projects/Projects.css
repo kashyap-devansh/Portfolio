@@ -224,34 +224,3 @@
   }
 }
 
-/* Filler card for odd project counts */
-
-.more-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 24px;
-  min-height: 280px;
-  padding: clamp(22px, 3vw, 44px);
-}
-
-.more-card__title {
-  font-size: clamp(2rem, 4vw, 3.75rem);
-  color: inherit;
-}
-
-.more-card__cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.more-card__cta svg {
-  width: 14px;
-  height: 14px;
-  transition: transform 0.4s var(--ease-out);
-}
-
-.more-card:hover .more-card__cta svg {
-  transform: translateX(6px);
-}

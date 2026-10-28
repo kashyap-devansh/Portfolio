@@ -20,6 +20,7 @@ import {
   ease,
 } from "../../components/motion.jsx";
 import portrait from "../../assets/img/portrait.webp";
+import SelfLearningSeal from "./SelfLearningSeal.jsx";
 import "./About.css";
 
 const hellos = ["Hello", "नमस्ते", "Hola", "Bonjour", "こんにちは"];
@@ -173,8 +174,13 @@ export default function About() {
             {education.map((e, i) => (
               <Reveal key={e.title} className="edu__card" delay={i * 0.12}>
                 <div className="edu__top">
-                  <span className="hud-label accent">{e.period}</span>
-                  <span className="edu__plus">+</span>
+                  <span className="edu__seal">
+                    {e.logo ? <img src={e.logo} alt={`${e.place} emblem`} loading="lazy" /> : <SelfLearningSeal />}
+                  </span>
+                  <span className="edu__meta">
+                    <span className="hud-label accent">{e.period}</span>
+                    <span className="edu__plus">+</span>
+                  </span>
                 </div>
                 <h3 className="edu__title">{e.title}</h3>
                 <p className="serif edu__place">{e.place}</p>

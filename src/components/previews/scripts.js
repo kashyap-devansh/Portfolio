@@ -1,3 +1,5 @@
+import { selectionSortFrames } from "./DsaApp.jsx";
+
 /*
   Scripted "screen recordings" played on hover. Each step is one of:
     { cmd, prompt }          typed out character by character, then committed
@@ -50,6 +52,16 @@ const ledgerMenu = (active) => ({
 });
 
 export const scripts = {
+  dsa: (() => {
+    const frames = selectionSortFrames();
+    const pace = { 6: 90, 7: 180, 9: 320, 4: 140, 1: 700, 11: 1800 };
+    return frames.map((frame, k) => ({
+      screen: "dsa",
+      data: { frame, step: k + 1, total: frames.length },
+      wait: pace[frame.line] ?? 120,
+    }));
+  })(),
+
   ark: [
     { cmd: "./ark" },
     { out: "Ark SQL engine — type .exit to quit", wait: 300 },

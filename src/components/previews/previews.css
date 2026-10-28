@@ -480,3 +480,364 @@
     font-size: 9px;
   }
 }
+
+/* ==========================================================================
+   DSA/Animator app mock — always dark, like a real capture of the app
+   ========================================================================== */
+
+.cover__app {
+  position: absolute;
+  inset: 12% 7% 11%;
+  border: 1px solid #2a2a2f;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px -24px rgba(0, 0, 0, 0.55);
+}
+
+.dsa {
+  --dsa-bg: #0c0c0e;
+  --dsa-panel: #141417;
+  --dsa-line: #26262b;
+  --dsa-bar: #3a3a40;
+  --dsa-done: #b6f23a;
+  --dsa-hot: #ff6b3d;
+  --dsa-ink: #ececec;
+  --dsa-muted: #8b8b92;
+  position: absolute;
+  inset: 0;
+  container-type: inline-size;
+  display: flex;
+  flex-direction: column;
+  gap: 2.2cqw;
+  padding: 3cqw 3.6cqw 2.6cqw;
+  background: radial-gradient(120% 60% at 50% 120%, rgba(30, 80, 60, 0.35), transparent 60%), var(--dsa-bg);
+  color: var(--dsa-ink);
+  font-family: var(--font-display);
+  font-size: 1.5cqw;
+  line-height: 1.35;
+  text-align: left;
+}
+
+.dsa__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 2cqw;
+}
+
+.dsa__head > div:first-child {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4cqw;
+}
+
+.dsa__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 1.2cqw;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--dsa-hot);
+}
+
+.dsa__title {
+  font-size: 4.6cqw;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+.dsa__sub {
+  color: var(--dsa-muted);
+}
+
+.dsa__cx {
+  display: flex;
+  gap: 2.4cqw;
+  font-family: var(--font-mono);
+}
+
+.dsa__cx span {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4cqw;
+}
+
+.dsa__cx i {
+  font-style: normal;
+  font-size: 1.1cqw;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--dsa-muted);
+}
+
+.dsa__cx b {
+  font-weight: 400;
+}
+
+.dsa__o { color: var(--dsa-hot); }
+.dsa__blue { color: #7f9cff; }
+
+.dsa__main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 2cqw;
+}
+
+.dsa__panel {
+  min-height: 0;
+  border: 1px solid var(--dsa-line);
+  border-radius: 1.2cqw;
+  background: var(--dsa-panel);
+  overflow: hidden;
+}
+
+.dsa__viz {
+  display: flex;
+  flex-direction: column;
+  padding: 2.4cqw 2.4cqw 1.6cqw;
+}
+
+.dsa__bars {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  gap: 0.6cqw;
+  padding-bottom: 1.4cqw;
+  border-bottom: 1px solid var(--dsa-line);
+}
+
+.dsa__bar {
+  flex: 1;
+  background: var(--dsa-bar);
+  transition: height 0.18s var(--ease-out), background-color 0.15s;
+}
+
+.dsa__bar.done { background: var(--dsa-done); }
+.dsa__bar.hot { background: var(--dsa-hot); }
+
+.dsa__note {
+  padding-top: 1.2cqw;
+  font-family: var(--font-mono);
+  font-size: 1.25cqw;
+  color: var(--dsa-muted);
+  white-space: nowrap;
+}
+
+.dsa__code {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-mono);
+  font-size: 1.22cqw;
+}
+
+.dsa__code-bar {
+  display: flex;
+  align-items: center;
+  gap: 1.2cqw;
+  padding: 1.2cqw 1.6cqw;
+  border-bottom: 1px solid var(--dsa-line);
+  color: var(--dsa-muted);
+}
+
+.dsa__file {
+  flex: 1;
+}
+
+.dsa__lights {
+  display: flex;
+  gap: 0.6cqw;
+}
+
+.dsa__lights i {
+  width: 1cqw;
+  height: 1cqw;
+  border-radius: 50%;
+  background: #ff5f57;
+}
+
+.dsa__lights i:nth-child(2) { background: #febc2e; }
+.dsa__lights i:nth-child(3) { background: #28c840; }
+
+.dsa__lines {
+  padding: 1.2cqw 0;
+}
+
+.dsa__line {
+  display: flex;
+  gap: 1.4cqw;
+  padding: 0.18cqw 1.6cqw 0.18cqw 1.4cqw;
+  border-left: 2px solid transparent;
+  white-space: pre;
+  transition: background-color 0.12s;
+}
+
+.dsa__line.is-active {
+  border-left-color: var(--dsa-hot);
+  background: rgba(255, 107, 61, 0.14);
+}
+
+.dsa__ln {
+  width: 1.6cqw;
+  text-align: right;
+  color: #55555c;
+}
+
+.dsa__kw { color: #ff7a4d; }
+.dsa__ty { color: #49b9c9; }
+.dsa__num { color: #7f9cff; }
+
+.dsa__controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2cqw;
+}
+
+.dsa__transport {
+  display: flex;
+  align-items: center;
+  gap: 1.1cqw;
+}
+
+.dsa__btn {
+  display: grid;
+  place-items: center;
+  width: 3.4cqw;
+  height: 3.4cqw;
+  border: 1px solid var(--dsa-line);
+  border-radius: 50%;
+  color: var(--dsa-muted);
+}
+
+.dsa__btn svg {
+  width: 50%;
+  height: 50%;
+}
+
+.dsa__btn--primary {
+  width: 4.6cqw;
+  height: 4.6cqw;
+  border: 0;
+  background: var(--dsa-hot);
+  color: #111;
+}
+
+.dsa__shuffle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7cqw;
+  height: 3.4cqw;
+  padding: 0 1.6cqw;
+  border: 1px solid var(--dsa-line);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 1.2cqw;
+  color: var(--dsa-muted);
+}
+
+.dsa__shuffle svg {
+  width: 1.6cqw;
+  height: 1.6cqw;
+}
+
+.dsa__speed {
+  display: flex;
+  align-items: center;
+  gap: 1.4cqw;
+  font-family: var(--font-mono);
+  font-size: 1.2cqw;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dsa-muted);
+}
+
+.dsa__track {
+  position: relative;
+  width: 11cqw;
+  height: 0.5cqw;
+  border-radius: 1cqw;
+  background: #e6e6e6;
+}
+
+.dsa__fill {
+  position: absolute;
+  inset: 0 55% 0 0;
+  border-radius: inherit;
+  background: var(--dsa-hot);
+}
+
+.dsa__knob {
+  position: absolute;
+  left: 45%;
+  top: 50%;
+  width: 2cqw;
+  height: 2cqw;
+  translate: -50% -50%;
+  border-radius: 50%;
+  background: #cfd2d8;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.dsa__count {
+  font-family: var(--font-display);
+  letter-spacing: 0;
+  font-size: 1.5cqw;
+  font-variant-numeric: tabular-nums;
+}
+
+.dsa__stats {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6cqw;
+  font-family: var(--font-mono);
+  font-size: 1.2cqw;
+  color: var(--dsa-muted);
+}
+
+.dsa__stats b {
+  font-family: var(--font-display);
+  font-size: 1.7cqw;
+  font-weight: 600;
+  color: var(--dsa-ink);
+}
+
+.dsa__stats > span {
+  width: 1.6cqw;
+}
+
+/* Narrow (phones): keep the bars, controls and counters — drop the rest. */
+@container (max-width: 380px) {
+  .dsa {
+    font-size: 3cqw;
+    gap: 3cqw;
+    padding: 4cqw;
+  }
+
+  .dsa__sub,
+  .dsa__cx,
+  .dsa__code,
+  .dsa__speed {
+    display: none;
+  }
+
+  .dsa__main {
+    grid-template-columns: 1fr;
+  }
+
+  .dsa__eyebrow { font-size: 2.6cqw; }
+  .dsa__title { font-size: 8cqw; }
+  .dsa__note { font-size: 3cqw; }
+  .dsa__btn { width: 7cqw; height: 7cqw; }
+  .dsa__btn--primary { width: 9cqw; height: 9cqw; }
+  .dsa__shuffle { height: 7cqw; font-size: 2.8cqw; padding: 0 3cqw; }
+  .dsa__shuffle svg { width: 3.4cqw; height: 3.4cqw; }
+  .dsa__stats { font-size: 2.8cqw; }
+  .dsa__stats b { font-size: 3.6cqw; }
+}
+
+/* The app recording fills the capture window edge to edge. */
+.rec__screen > .dsa {
+  border-top: 0;
+}

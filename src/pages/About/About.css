@@ -149,8 +149,49 @@
 .edu__top {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   margin-bottom: clamp(24px, 4vw, 64px);
+}
+
+.edu__seal {
+  position: relative;
+  display: block;
+  flex-shrink: 0;
+  width: clamp(76px, 7vw, 96px);
+  aspect-ratio: 1;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  /* Light tile in both themes so the full-colour crests stay true. */
+  background: #f7f6f3;
+  transition: transform 0.7s var(--ease-out), border-color 0.3s;
+}
+
+.edu__seal img {
+  position: absolute;
+  inset: 13%;
+  width: 74%;
+  height: 74%;
+  object-fit: contain;
+}
+
+/* The drawn seal is already round — let it fill the tile. */
+.edu__seal svg {
+  position: absolute;
+  inset: 3%;
+  width: 94%;
+  height: 94%;
+}
+
+.edu__card:hover .edu__seal {
+  transform: rotate(-8deg) scale(1.06);
+  border-color: var(--line-strong);
+}
+
+.edu__meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  align-self: flex-start;
 }
 
 .edu__plus {
@@ -160,7 +201,48 @@
   transition: transform 0.6s var(--ease-out), color 0.3s;
 }
 
-.edu__card:hover .edu__plus {
+.edu__card:hover .edu__seal {
+  position: relative;
+  display: block;
+  flex-shrink: 0;
+  width: clamp(76px, 7vw, 96px);
+  aspect-ratio: 1;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  /* Light tile in both themes so the full-colour crests stay true. */
+  background: #f7f6f3;
+  transition: transform 0.7s var(--ease-out), border-color 0.3s;
+}
+
+.edu__seal img {
+  position: absolute;
+  inset: 13%;
+  width: 74%;
+  height: 74%;
+  object-fit: contain;
+}
+
+/* The drawn seal is already round — let it fill the tile. */
+.edu__seal svg {
+  position: absolute;
+  inset: 3%;
+  width: 94%;
+  height: 94%;
+}
+
+.edu__card:hover .edu__seal {
+  transform: rotate(-8deg) scale(1.06);
+  border-color: var(--line-strong);
+}
+
+.edu__meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  align-self: flex-start;
+}
+
+.edu__plus {
   transform: rotate(90deg);
   color: var(--accent);
 }

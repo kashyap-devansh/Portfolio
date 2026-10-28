@@ -1,4 +1,6 @@
 
+import school from "../assets/img/school.webp";
+import university from "../assets/img/university.webp";
 import C from "../assets/c.svg";
 import Cpp from "../assets/cplusplus.svg";
 import Arch from "../assets/archlinux.svg";
@@ -25,6 +27,21 @@ export const profile = {
 
 // `hue` tints each project's coded cover and recording; it shows fully on hover.
 export const projects = [
+  {
+    id: "dsa",
+    title: "DSA/Animator",
+    kind: "Algorithm Visualizer",
+    category: "Web",
+    lang: "React",
+    year: "2026",
+    hue: "#ff6b3d",
+    tags: ["React", "Framer Motion", "Visualizer"],
+    summary:
+      "An interactive, code-synced visualizer for data structures and algorithms. It runs the real algorithm step by step beside its source, highlighting the executing line, with play, rewind, speed control and live stats.",
+    link: "https://github.com/kashyap-devansh/dsa-animator",
+    live: "https://dsa-animator-kappa.vercel.app",
+    featured: true,
+  },
   {
     id: "ark",
     title: "Ark",
@@ -173,12 +190,14 @@ export const education = [
     period: "Then",
     title: "Higher Secondary Education",
     place: "M.M. International School",
+    logo: school,
     body: "Built a strong foundation in mathematics, science and problem solving — and an early interest in computers that led straight to Computer Science.",
   },
   {
     period: "Now",
     title: "B.Tech Computer Science",
     place: "Jaypee University of Information Technology",
+    logo: university,
     body: "Building a foundation in software engineering, systems programming and backend development through coursework and personal projects.",
   },
   {
@@ -207,14 +226,29 @@ export const hobbies = [
 export const journey = [
   {
     title: "Engineering",
-    items: ["Curio — Interpreted Language", "Ark — SQL Database Engine", "Ledger — Inventory System"],
+    items: [
+      "DSA/Animator — Algorithm Visualizer",
+      "Curio — Interpreted Language",
+      "Ark — SQL Database Engine",
+      "Ledger — Inventory System",
+    ],
   },
   {
     title: "Learning",
-    items: ["Started with C / C++", "Switched to Linux", "Found my passion for systems"],
+    items: [
+      "Started with C / C++",
+      "Switched to Linux",
+      "Found my passion for systems",
+      "Picked up React for the web",
+    ],
   },
   {
     title: "Achievements",
-    items: ["Projects built from scratch", "Thousands of lines of code", "Open source enthusiast"],
+    items: [
+      "Projects built from scratch",
+      "Thousands of lines of code",
+      "Shipped a live web app",
+      "Open source enthusiast",
+    ],
   },
 ];
