@@ -4,12 +4,29 @@ import Lenis from "lenis";
 
 let lenis = null;
 
+const NAV_OFFSET = -56;
+
 /* Scroll to an element id (or the top) through Lenis when it is running. */
 export function scrollToTarget(target, { immediate = false } = {}) {
   const el = typeof target === "string" ? document.getElementById(target) : null;
   const dest = el ?? 0;
   if (lenis) {
-    lenis.scrollTo(dest, { offset: el ? -56 : 0, immediate, duration: 1.4 });
+    // Lenis caches the page height; after a route change it still holds the
+    // previous page's, which clamps the scroll short. Re-measure first.
+    lenis.resize();
+    lenis.scrollTo(dest, {
+      offset: el ? NAV_OFFSET : 0,
+      immediate,
+      duration: 1.4,
+      force: true,
+      // If late layout (images, fonts) moved the target, settle on it.
+      onComplete: () => {
+        if (el && Math.abs(el.getBoundingClientRect().top + NAV_OFFSET) > 4) {
+          lenis.resize();
+          lenis.scrollTo(el, { offset: NAV_OFFSET, immediate: true, force: true });
+        }
+      },
+    });
   } else if (el) {
     el.scrollIntoView({ behavior: immediate ? "auto" : "smooth" });
   } else {
@@ -23,7 +40,7 @@ export default function SmoothScroll() {
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    lenis = new Lenis({ duration: 1.15, smoothWheel: true, anchors: { offset: -56 } });
+    lenis = new Lenis({ duration: 1.15, smoothWheel: true, anchors: { offset: NAV_OFFSET } });
     let raf = requestAnimationFrame(function loop(t) {
       lenis.raf(t);
       raf = requestAnimationFrame(loop);
@@ -39,7 +56,8 @@ export default function SmoothScroll() {
   useEffect(() => {
     if (hash) {
       const id = hash.slice(1);
-      const t = setTimeout(() => scrollToTarget(id), 120);
+      // Give the new page a moment to lay out before measuring it.
+      const t = setTimeout(() => requestAnimationFrame(() => scrollToTarget(id)), 150);
       return () => clearTimeout(t);
     }
     scrollToTarget(null, { immediate: true });
