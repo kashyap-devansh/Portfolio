@@ -485,15 +485,6 @@
    DSA/Animator app mock — always dark, like a real capture of the app
    ========================================================================== */
 
-.cover__app {
-  position: absolute;
-  inset: 12% 7% 11%;
-  border: 1px solid #2a2a2f;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 30px 60px -24px rgba(0, 0, 0, 0.55);
-}
-
 .dsa {
   --dsa-bg: #0c0c0e;
   --dsa-panel: #141417;

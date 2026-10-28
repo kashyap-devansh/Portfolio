@@ -646,12 +646,13 @@
   --rule: 1;
 }
 
+/* Photo tucks in right beside "together." rather than across the page. */
 .contact__hero {
   position: relative;
   display: flex;
   align-items: flex-end;
-  justify-content: space-between;
-  gap: 24px;
+  justify-content: flex-start;
+  gap: 0;
   margin-top: clamp(32px, 5vw, 64px);
 }
 
@@ -665,8 +666,10 @@
 }
 
 .contact__figure {
-  width: clamp(140px, 24vw, 340px);
+  width: clamp(220px, 29vw, 440px);
   flex-shrink: 0;
+  margin-left: clamp(-56px, -2vw, -12px);
+  margin-bottom: -0.6vw;
   filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.35));
 }
 
@@ -709,14 +712,10 @@
     grid-template-columns: 1fr;
   }
 
-  .contact__hero {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
+  /* Phones: keep the photo up beside the title, overlapping its tail. */
   .contact__figure {
-    align-self: flex-end;
-    margin-top: -12vw;
-    width: 46vw;
+    width: 40vw;
+    margin-left: -9vw;
+    margin-bottom: 0;
   }
 }

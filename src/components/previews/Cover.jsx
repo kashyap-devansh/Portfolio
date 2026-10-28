@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import DsaApp, { selectionSortFrames } from "./DsaApp.jsx";
 
 /*
   Static project artwork drawn in code. Every cover shares one frame —
@@ -70,17 +69,88 @@ function UnoMotif() {
   );
 }
 
-// A paused frame of the real Selection Sort page, mid-pass.
-const dsaFrames = selectionSortFrames();
-const DSA_STILL = 54;
+function DsaMotif() {
+  // An array mid-sort: settled prefix, two bars swapping, pointers below,
+  // and the play / step controls that make it an animator.
+  const heights = [62, 96, 128, 160, 214, 118, 186, 142, 84];
+  const x0 = 123;
+  const w = 30;
+  const gap = 10;
+  const base = 290;
+  const xs = heights.map((_, i) => x0 + i * (w + gap));
+  const [a, b] = [4, 5];
+  const mid = (i) => xs[i] + w / 2;
+
+  return (
+    <svg viewBox="0 0 600 400" className="cover__svg">
+      <line x1={x0 - 16} y1={base} x2={xs.at(-1) + w + 16} y2={base} stroke="currentColor" strokeOpacity="0.45" />
+      {heights.map((h, i) => {
+        const done = i < a;
+        const hot = i === a || i === b;
+        return (
+          <rect
+            key={i}
+            x={xs[i]}
+            y={base - h}
+            width={w}
+            height={h}
+            fill={hot ? "currentColor" : done ? "currentColor" : "var(--cover-bg)"}
+            fillOpacity={hot ? 1 : done ? 0.28 : 1}
+            stroke="currentColor"
+            strokeWidth="1.5"
+            style={hot ? { filter: "drop-shadow(0 0 14px currentColor)" } : undefined}
+          />
+        );
+      })}
+
+      {/* swap arc */}
+      <path
+        d={`M${mid(a)} ${base - heights[a] - 14} C ${mid(a)} ${base - heights[a] - 62}, ${mid(b)} ${base - heights[a] - 62}, ${mid(b)} ${base - heights[b] - 14}`}
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeDasharray="4 5"
+      />
+      <path d={`M${mid(b) - 5} ${base - heights[b] - 22} L${mid(b)} ${base - heights[b] - 12} L${mid(b) + 5} ${base - heights[b] - 22}`} fill="none" stroke="currentColor" strokeWidth="1.5" />
+
+      {/* indices + pointers */}
+      {xs.map((x, i) => (
+        <text key={i} x={x + w / 2} y={base + 18} textAnchor="middle" fontFamily="var(--font-mono)" fontSize="10" fill="var(--faint)">
+          {i}
+        </text>
+      ))}
+      {[
+        [a, "i"],
+        [b, "min"],
+      ].map(([i, label]) => (
+        <g key={label} fill="currentColor" fontFamily="var(--font-mono)" fontSize="11" fontWeight="700">
+          <path d={`M${mid(i)} ${base + 26} l-5 8 h10 z`} />
+          <text x={mid(i)} y={base + 48} textAnchor="middle">
+            {label}
+          </text>
+        </g>
+      ))}
+
+      {/* transport */}
+      <g transform="translate(300 362)" stroke="currentColor" strokeWidth="1.5" fill="none">
+        <circle cx="-40" r="11" strokeOpacity="0.6" />
+        <path d="M-37 -5 l-7 5 7 5 z M-45 -5 v10" strokeOpacity="0.6" />
+        <circle r="15" fill="currentColor" />
+        <path d="M-4 -7 v14 l11 -7 z" fill="var(--cover-bg)" stroke="none" />
+        <circle cx="40" r="11" strokeOpacity="0.6" />
+        <path d="M37 -5 l7 5 -7 5 z M45 -5 v10" strokeOpacity="0.6" />
+      </g>
+    </svg>
+  );
+}
 
 const covers = {
   dsa: {
-    glyph: (
-      <div className="cover__app">
-        <DsaApp frame={dsaFrames[DSA_STILL]} step={DSA_STILL + 1} total={dsaFrames.length} />
-      </div>
-    ),
+    motif: <DsaMotif />,
+    chips: [
+      { t: "if (a[j] < a[min])", x: 6, y: 20 },
+      { t: "CMP 42 · SWP 2", x: 72, y: 20 },
+    ],
   },
   ark: {
     motif: <ArkMotif />,

@@ -36,11 +36,18 @@ export default function Footer() {
 
           <div className="footer__col">
             <span className="hud-label faint">Projects</span>
-            {projects.map((p) => (
-              <a key={p.id} href={p.link} target="_blank" rel="noreferrer" className="link-u">
-                {p.title}
-              </a>
-            ))}
+            {/* Top four only — the full list lives on /projects. */}
+            {projects
+              .filter((p) => p.featured)
+              .slice(0, 4)
+              .map((p) => (
+                <a key={p.id} href={p.link} target="_blank" rel="noreferrer" className="link-u">
+                  {p.title}
+                </a>
+              ))}
+            <Link to="/projects" className="link-u footer__all">
+              All projects ({projects.length}) →
+            </Link>
           </div>
 
           <div className="footer__col">

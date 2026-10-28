@@ -175,7 +175,15 @@ export default function About() {
               <Reveal key={e.title} className="edu__card" delay={i * 0.12}>
                 <div className="edu__top">
                   <span className="edu__seal">
-                    {e.logo ? <img src={e.logo} alt={`${e.place} emblem`} loading="lazy" /> : <SelfLearningSeal />}
+                    {e.logo ? (
+                      <>
+                        {/* Dark-theme copy has its black ink lifted to light so it reads on dark. */}
+                        <img className="edu__logo edu__logo--light" src={e.logo} alt={`${e.place} emblem`} loading="lazy" />
+                        <img className="edu__logo edu__logo--dark" src={e.logoDark} alt="" loading="lazy" />
+                      </>
+                    ) : (
+                      <SelfLearningSeal />
+                    )}
                   </span>
                   <span className="edu__meta">
                     <span className="hud-label accent">{e.period}</span>

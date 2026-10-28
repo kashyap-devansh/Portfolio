@@ -349,7 +349,7 @@ function Contact() {
   const [copied, setCopied] = useState(false);
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end end"] });
-  const figureY = useTransform(scrollYProgress, [0, 1], ["30%", "0%"]);
+  const figureY = useTransform(scrollYProgress, [0, 1], ["14%", "0%"]);
   const figureRotate = useTransform(scrollYProgress, [0, 1], [-6, 0]);
 
   const copy = async () => {

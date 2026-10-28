@@ -1,6 +1,8 @@
 
 import school from "../assets/img/school.webp";
 import university from "../assets/img/university.webp";
+import schoolDark from "../assets/img/school-dark.webp";
+import universityDark from "../assets/img/university-dark.webp";
 import C from "../assets/c.svg";
 import Cpp from "../assets/cplusplus.svg";
 import Arch from "../assets/archlinux.svg";
@@ -191,6 +193,7 @@ export const education = [
     title: "Higher Secondary Education",
     place: "M.M. International School",
     logo: school,
+    logoDark: schoolDark,
     body: "Built a strong foundation in mathematics, science and problem solving — and an early interest in computers that led straight to Computer Science.",
   },
   {
@@ -198,6 +201,7 @@ export const education = [
     title: "B.Tech Computer Science",
     place: "Jaypee University of Information Technology",
     logo: university,
+    logoDark: universityDark,
     body: "Building a foundation in software engineering, systems programming and backend development through coursework and personal projects.",
   },
   {
