@@ -13,7 +13,6 @@ import {
 import {
   Arrow,
   Counter,
-  Magnetic,
   Marquee,
   Reveal,
   ScrollWords,
@@ -23,103 +22,145 @@ import {
 } from "../../components/motion.jsx";
 import ProjectCard from "../../components/ProjectCard.jsx";
 import MoreCard from "../../components/MoreCard.jsx";
-import Terminal from "./Terminal.jsx";
 import portrait from "../../assets/img/portrait.webp";
 import cutout from "../../assets/img/cutout.webp";
 import "./Home.css";
 
 /* ------------------------------------------------------------------ Hero */
 
+// Faint dashes radiating from the centre, generated once and drawn as one static SVG.
+const dashes = Array.from({ length: 150 }, (_, i) => {
+  const a = i * 2.39996 + (i % 7) * 0.13;
+  const r = 140 + ((i * 97) % 820);
+  const len = 6 + ((i * 31) % 14);
+  const x = 1000 + Math.cos(a) * r;
+  const y = 600 + Math.sin(a) * r;
+  return `M${x.toFixed(1)} ${y.toFixed(1)}L${(x + Math.cos(a) * len).toFixed(1)} ${(y + Math.sin(a) * len).toFixed(1)}`;
+}).join("");
+
+// Tool logos split across two orbits; each sits at an angle and depth of its own.
+const orbits = [
+  { cls: "hero__orbit--inner", items: tools.slice(0, 5) },
+  { cls: "hero__orbit--outer", items: tools.slice(5) },
+];
+
+function GridIcon() {
+  return (
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.4" aria-hidden="true">
+      <rect x="2" y="2" width="5" height="5" />
+      <rect x="9" y="2" width="5" height="5" />
+      <rect x="2" y="9" width="5" height="5" />
+      <rect x="9" y="9" width="5" height="5" />
+    </svg>
+  );
+}
+
+function GitHubIcon() {
+  return (
+    <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+      <path d="M8 0a8 8 0 0 0-2.53 15.59c.4.07.55-.17.55-.38v-1.33c-2.23.48-2.7-1.07-2.7-1.07-.36-.92-.89-1.17-.89-1.17-.73-.5.06-.49.06-.49.8.06 1.23.83 1.23.83.71 1.22 1.87.87 2.33.66.07-.52.28-.87.5-1.07-1.78-.2-3.65-.89-3.65-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.28.82 2.15 0 3.07-1.87 3.75-3.66 3.95.29.25.54.73.54 1.48v2.2c0 .21.15.46.55.38A8 8 0 0 0 8 0Z" />
+    </svg>
+  );
+}
+
 function Hero({ ready }) {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const titleY = useTransform(scrollYProgress, [0, 1], ["0%", "35%"]);
-  const fade = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
+  const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
+  const fade = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
 
-  // Glow follows the pointer through CSS variables — no re-renders.
-  const onMove = (e) => {
-    const r = e.currentTarget.getBoundingClientRect();
-    e.currentTarget.style.setProperty("--mx", `${((e.clientX - r.left) / r.width) * 100}%`);
-    e.currentTarget.style.setProperty("--my", `${((e.clientY - r.top) / r.height) * 100}%`);
-  };
-
-  const fadeIn = (delay) => ({
-    initial: { opacity: 0, y: 24 },
+  const reveal = (delay) => ({
+    initial: { opacity: 0, y: 18 },
     animate: ready ? { opacity: 1, y: 0 } : {},
-    transition: { duration: 1, ease, delay },
+    transition: { duration: 0.9, ease, delay },
   });
 
   return (
-    <section ref={ref} className="hero" onPointerMove={onMove}>
+    <section ref={ref} className={`hero${ready ? " is-ready" : ""}`}>
       <div className="hero__bg" aria-hidden="true">
-        <div className="hero__grid" />
-        <div className="hero__glow hero__glow--a" />
-        <div className="hero__glow hero__glow--b" />
-        <div className="hero__glow hero__glow--pointer" />
+        <svg className="hero__dashes" viewBox="0 0 2000 1200" preserveAspectRatio="xMidYMid slice">
+          <path d={dashes} />
+        </svg>
+        <div className="hero__ring hero__ring--a" />
+        <div className="hero__ring hero__ring--b" />
+        <div className="hero__ring hero__ring--c" />
+        {orbits.map((o) => (
+          <div key={o.cls} className={`hero__orbit ${o.cls}`}>
+            {o.items.map((t, i) => (
+              <span
+                key={t.name}
+                className="hero__sat"
+                style={{ "--p": i / o.items.length + (o.cls.endsWith("outer") ? 0.06 : 0), "--d": i % 3 }}
+              >
+                <span className="hero__tile">
+                  <img src={t.icon} alt="" />
+                </span>
+              </span>
+            ))}
+          </div>
+        ))}
       </div>
 
-      <motion.div className="container hero__inner" style={{ opacity: fade }}>
-        <motion.div className="hero__meta hud-label" {...fadeIn(0.1)}>
-          <span>
-            <span className="accent">[00]</span> Portfolio — 2026
-          </span>
-          <span className="hero__status">
-            <span className="pulse-dot" /> Open to internships &amp; collaborations
-          </span>
-        </motion.div>
+      <motion.div className="hero__inner" style={{ y: contentY, opacity: fade }}>
+        <div className="hero__halo" aria-hidden="true" />
 
-        <motion.div style={{ y: titleY }}>
-          <SplitWords
-            as="h1"
-            play={ready}
-            delay={0.15}
-            stagger={0.07}
-            className="display display-xl hero__title"
-            parts={[["I build software"], ["from the"], ["ground up.", "serif accent"]]}
-          />
-        </motion.div>
-
-        <div className="hero__lower">
-          <div className="hero__copy">
-            <motion.p className="lede" {...fadeIn(0.8)}>
-              I'm <strong className="hero__name">Devansh Kashyap</strong>, a 19-year-old developer writing
-              interpreters, database engines and terminal tools from scratch in C and C++.
-            </motion.p>
-            <motion.div className="hero__ctas" {...fadeIn(0.95)}>
-              <Magnetic>
-                <a href="#work" className="btn btn--solid">
-                  Selected work <Arrow />
-                </a>
-              </Magnetic>
-              <Magnetic>
-                <a href="#contact" className="btn btn--line">
-                  Get in touch
-                </a>
-              </Magnetic>
-            </motion.div>
-            <motion.p className="hud-label faint hero__platforms" {...fadeIn(1.1)}>
-              Open source · C / C++ · Linux
-            </motion.p>
-          </div>
-
-          <motion.div
-            className="hero__term"
-            initial={{ opacity: 0, y: 40, rotateX: 18 }}
-            animate={ready ? { opacity: 1, y: 0, rotateX: 0 } : {}}
-            transition={{ duration: 1.3, ease, delay: 0.7 }}
-          >
-            <Terminal />
-          </motion.div>
+        <div className="hero__mark" role="img" aria-label={profile.name}>
+          {["D", "E", "V", "Λ", "N", "S", "H"].map((ch, i) => (
+            <motion.span
+              key={i}
+              aria-hidden="true"
+              className="hero__letter"
+              initial={{ opacity: 0, y: "30%" }}
+              animate={ready ? { opacity: 1, y: "0%" } : {}}
+              transition={{ duration: 1, ease, delay: 0.1 + i * 0.06 }}
+            >
+              {ch === "Λ" ? (
+                <svg viewBox="0 0 116 100" className="hero__lambda">
+                  <path d="M0 100 42 0h32l42 100H86L58 31 30 100Z" />
+                </svg>
+              ) : (
+                ch
+              )}
+            </motion.span>
+          ))}
         </div>
-      </motion.div>
 
-      <motion.div
-        className="hero__scroll hud-label faint"
-        initial={{ opacity: 0 }}
-        animate={ready ? { opacity: 1 } : {}}
-        transition={{ delay: 1.6 }}
-      >
-        <span className="hero__scroll-line" /> Scroll
+        <motion.h1 className="hero__title" {...reveal(0.55)}>
+          I build software <span className="serif">from the ground up.</span>
+        </motion.h1>
+
+        <motion.p className="hero__lede" {...reveal(0.65)}>
+          I&apos;m Devansh Kashyap, a 19-year-old developer writing interpreters, database engines and
+          terminal tools from scratch in C and C++.
+        </motion.p>
+
+        <motion.div className="hero__ctas" {...reveal(0.75)}>
+          <span className="hero__cta-stack">
+            <a href="#work" className="btn btn--solid">
+              <Arrow /> View my work
+            </a>
+            <span className="hud-label faint">C · C++ · JavaScript</span>
+          </span>
+          <a href="#contact" className="btn btn--line">
+            <GridIcon /> Get in touch
+          </a>
+        </motion.div>
+
+        <motion.p className="hero__resume" {...reveal(0.85)}>
+          Looking for my résumé? <Link to="/resume">Read it here</Link> or{" "}
+          <a href="/resume.pdf" target="_blank" rel="noreferrer">
+            download the PDF
+          </a>
+          .
+        </motion.p>
+
+        <motion.div className="hero__facts" {...reveal(0.95)}>
+          <a href={profile.github} target="_blank" rel="noreferrer" className="hud-label">
+            <GitHubIcon /> Open source on GitHub
+          </a>
+          <span className="hud-label">C · C++ · Linux</span>
+          <span className="hud-label">Open to internships</span>
+        </motion.div>
       </motion.div>
     </section>
   );

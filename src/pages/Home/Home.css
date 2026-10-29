@@ -1,16 +1,19 @@
 /* ==========================================================================
    Hero
+   --------------------------------------------------------------------------
+   Centred wordmark over a field of radiating dashes, thin orbit rings and
+   tool logos circling slowly. The dashes, rings and halo are static; the
+   only things that move are the small logo tiles, by transform, so the
+   whole hero stays on the compositor.
    ========================================================================== */
 
 .hero {
-  --mx: 70%;
-  --my: 40%;
   position: relative;
   min-height: 100svh;
   display: flex;
-  flex-direction: column;
-  padding-top: calc(var(--nav-h) + clamp(24px, 4vw, 48px));
-  padding-bottom: clamp(56px, 8vw, 96px);
+  align-items: center;
+  justify-content: center;
+  padding: calc(var(--nav-h) + 40px) var(--gutter) 64px;
   overflow: hidden;
   isolation: isolate;
 }
@@ -20,232 +23,308 @@
   inset: 0;
   z-index: -1;
   pointer-events: none;
+  contain: strict;
 }
 
-/* Engineering grid that fades toward the edges */
-.hero__grid {
+.hero__dashes {
   position: absolute;
   inset: 0;
-  background-image:
-    linear-gradient(var(--line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--line) 1px, transparent 1px);
-  background-size: clamp(48px, 6vw, 88px) clamp(48px, 6vw, 88px);
-  mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, #000 20%, transparent 75%);
-  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, #000 20%, transparent 75%);
-  opacity: 0.55;
+  width: 100%;
+  height: 100%;
+  stroke: var(--ink);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  opacity: 0.16;
 }
 
-.hero__glow {
+/* Thin rings: a conic gradient masked down to a hairline, painted once. */
+.hero__ring {
   position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--r);
+  aspect-ratio: 1;
+  translate: -50% -50%;
   border-radius: 50%;
-  filter: blur(80px);
+  background: conic-gradient(from var(--from), transparent 0deg, var(--c1) 50deg, transparent 120deg, transparent 190deg, var(--c2) 250deg, transparent 320deg);
+  mask: radial-gradient(farthest-side, transparent calc(100% - 1.5px), #000 calc(100% - 1px));
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 1.5px), #000 calc(100% - 1px));
+  opacity: 0;
+  transition: opacity 1.6s var(--ease-out) 0.4s;
+}
+
+.hero.is-ready .hero__ring {
+  opacity: 0.7;
+}
+
+.hero__ring--a {
+  --r: min(62vw, 880px);
+  --from: 200deg;
+  --c1: #5b84ff;
+  --c2: var(--accent);
+}
+
+.hero__ring--b {
+  --r: min(96vw, 1380px);
+  --from: 20deg;
+  --c1: #b57be8;
+  --c2: #3fc1d4;
+}
+
+.hero__ring--c {
+  --r: min(130vw, 1900px);
+  --from: 110deg;
+  --c1: #3ddc84;
+  --c2: #d9a94a;
+}
+
+/* Each tile travels its own ellipse: an animated angle fed through cos/sin.
+   Only twelve small tiles move — no orbit-sized layers to composite. */
+@property --ang {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.hero__orbit {
+  --k: 0.5;
+  position: absolute;
+  inset: 0;
+}
+
+.hero__orbit--inner {
+  --t: 110s;
+  --r: min(36vw, 520px);
+}
+
+.hero__orbit--outer {
+  --t: 160s;
+  --r: min(48vw, 690px);
+}
+
+.hero__sat {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(calc(cos(var(--ang)) * var(--r)), calc(sin(var(--ang)) * var(--r) * var(--k)));
+  animation: orbit var(--t) linear infinite;
+  animation-delay: calc(var(--p) * var(--t) * -1);
   will-change: transform;
 }
 
-.hero__glow--a {
-  width: 55vmax;
-  height: 30vmax;
-  left: 10%;
-  bottom: -18vmax;
-  background: var(--glow-a);
-  animation: drift-a 18s ease-in-out infinite alternate;
+.hero__orbit--outer .hero__sat {
+  animation-direction: reverse;
 }
 
-.hero__glow--b {
-  width: 40vmax;
-  height: 26vmax;
-  right: -10%;
-  bottom: -12vmax;
-  background: var(--glow-b);
-  animation: drift-b 22s ease-in-out infinite alternate;
+@keyframes orbit {
+  to { --ang: 360deg; }
 }
 
-.hero__glow--pointer {
-  inset: 0;
-  border-radius: 0;
-  filter: none;
-  background: radial-gradient(circle 22vmax at var(--mx) var(--my), var(--accent-soft), transparent 70%);
-  transition: background 0.2s;
+.hero__tile {
+  --size: calc(84px - var(--d) * 16px);
+  display: grid;
+  place-items: center;
+  width: var(--size);
+  height: var(--size);
+  margin: calc(var(--size) / -2);
+  border: 1px solid var(--line-strong);
+  border-radius: 14px;
+  background: var(--bg-raised);
+  box-shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  scale: 0.6;
+  transition: opacity 1.2s var(--ease-out), scale 1.2s var(--ease-out);
+  transition-delay: calc(0.6s + var(--d) * 0.15s);
 }
 
-@keyframes drift-a {
-  to { transform: translate(18vw, -6vh) scale(1.15); }
+.hero.is-ready .hero__tile {
+  opacity: calc(0.95 - var(--d) * 0.22);
+  scale: 1;
 }
 
-@keyframes drift-b {
-  to { transform: translate(-22vw, -10vh) scale(0.9); }
+/* Logos sit on a light chip so dark marks (GitHub, Bash…) read in both themes. */
+.hero__tile img {
+  width: 62%;
+  height: 62%;
+  padding: 15%;
+  border-radius: 50%;
+  background: #f2f1ee;
+  object-fit: contain;
 }
+
+/* ---------------------------------------------------------------- Copy */
 
 .hero__inner {
-  flex: 1;
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: clamp(28px, 5vw, 64px);
-}
-
-.hero__meta {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 10px 24px;
-  color: var(--muted);
-}
-
-.hero__status {
-  display: inline-flex;
   align-items: center;
-  gap: 10px;
+  width: min(100%, 700px);
+  text-align: center;
+  container-type: inline-size;
+}
+
+/* Page-coloured wash so the copy reads cleanly over the orbit. */
+.hero__halo {
+  position: absolute;
+  inset: -90px -130px;
+  z-index: -1;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--bg) 82%, transparent), transparent);
+}
+
+.hero__mark {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  width: 100%;
+  font-family: var(--font-display);
+  font-weight: 750;
+  font-stretch: 125%;
+  font-size: 15.4cqw;
+  line-height: 1;
+  white-space: nowrap;
+  color: var(--ink-strong);
+  user-select: none;
+}
+
+.hero__letter {
+  display: inline-block;
+  text-shadow:
+    0 0 0.6vw color-mix(in srgb, var(--bg) 92%, transparent),
+    0 0.25vw 2.4vw color-mix(in srgb, var(--bg) 78%, transparent);
+  will-change: transform, opacity;
+}
+
+.hero__lambda {
+  display: block;
+  width: 0.8em;
+  height: 0.69em;
+  margin: 0 0.02em;
+  fill: var(--accent);
 }
 
 .hero__title {
-  max-width: 14ch;
+  margin: 32px 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3vw, 2.4rem);
   font-weight: 500;
-  font-stretch: 100%;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--ink-strong);
+  text-wrap: balance;
 }
 
 .hero__title .serif {
-  font-size: 1.06em;
-  letter-spacing: -0.03em;
-  padding-right: 0.06em;
+  font-weight: 400;
+  font-size: 1.08em;
+  letter-spacing: -0.02em;
+  color: var(--muted);
 }
 
-.hero__lower {
-  margin-top: auto;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
-  gap: clamp(32px, 5vw, 80px);
-  align-items: end;
-}
-
-.hero__copy {
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
-}
-
-.hero__name {
-  color: var(--ink-strong);
-  font-weight: 600;
+.hero__lede {
+  max-width: 30rem;
+  margin: 16px 0 0;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--muted);
+  text-wrap: balance;
 }
 
 .hero__ctas {
   display: flex;
   flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
   gap: 12px;
+  margin-top: 28px;
 }
 
-.hero__term {
-  perspective: 1000px;
-  transform-origin: bottom center;
-}
-
-.hero__scroll {
-  position: absolute;
-  left: 50%;
-  bottom: 22px;
+.hero__cta-stack {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  translate: -50% 0;
+  gap: 8px;
 }
 
-.hero__scroll-line {
-  width: 1px;
-  height: 36px;
-  background: linear-gradient(var(--accent), transparent);
-  animation: scroll-line 2s var(--ease-in-out) infinite;
-  transform-origin: top;
+.hero__ctas .btn--solid svg {
+  transform: rotate(90deg);
 }
 
-@keyframes scroll-line {
-  0% { transform: scaleY(0); transform-origin: top; }
-  50% { transform: scaleY(1); transform-origin: top; }
-  51% { transform-origin: bottom; }
-  100% { transform: scaleY(0); transform-origin: bottom; }
+.hero__ctas .btn--solid:hover svg {
+  transform: rotate(90deg) translateX(3px);
 }
 
-@media (max-width: 900px) {
-  .hero__lower {
-    grid-template-columns: 1fr;
-  }
-
-  .hero__scroll {
-    display: none;
-  }
+.hero__ctas .btn--line {
+  background: var(--bg);
 }
 
-/* ==========================================================================
-   Terminal
-   ========================================================================== */
-
-.term {
-  border: 1px solid var(--line-strong);
-  background: color-mix(in srgb, var(--bg-sunken) 82%, transparent);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  box-shadow: 0 40px 80px -30px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.02) inset;
-}
-
-.term__bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  height: 38px;
-  padding: 0 14px;
-  border-bottom: 1px solid var(--line);
-}
-
-.term__dots {
-  display: flex;
-  gap: 6px;
-}
-
-.term__dots i {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: var(--line-strong);
-}
-
-.term__dots i:first-child {
-  background: var(--accent);
-}
-
-.term__body {
-  height: clamp(220px, 26vw, 280px);
-  margin: 0;
-  padding: 16px 18px;
-  overflow: hidden;
-  font-family: var(--font-mono);
-  font-size: clamp(12px, 1vw, 13.5px);
-  line-height: 1.7;
-  color: var(--ink);
-  white-space: pre-wrap;
-  word-break: break-word;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-}
-
-.term__prompt {
-  color: var(--accent);
-  font-weight: 700;
-}
-
-.term__out {
+.hero__resume {
+  margin: 20px 0 0;
   color: var(--muted);
+  text-wrap: balance;
 }
 
-.term__cursor {
-  display: inline-block;
-  width: 0.6em;
-  height: 1.1em;
-  margin-left: 2px;
-  vertical-align: text-bottom;
-  background: var(--ink);
-  animation: blink 1s steps(1) infinite;
+.hero__resume a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--line-strong);
+  text-underline-offset: 4px;
+  transition: text-decoration-color 0.3s;
+}
+
+.hero__resume a:hover {
+  text-decoration-color: currentColor;
+}
+
+.hero__facts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 24px;
+  margin-top: 28px;
+  color: var(--faint);
+}
+
+.hero__facts a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.3s;
+}
+
+.hero__facts a:hover {
+  color: var(--ink);
+}
+
+.hero__facts svg {
+  width: 14px;
+  height: 14px;
+}
+
+@media (max-width: 700px) {
+  .hero__orbit {
+    --k: 1.15;
+  }
+
+  .hero__orbit--inner {
+    --r: 46vw;
+  }
+
+  .hero__orbit--outer {
+    --r: 78vw;
+  }
+
+  .hero__tile {
+    --size: calc(56px - var(--d) * 10px);
+    border-radius: 10px;
+  }
+
+  .hero.is-ready .hero__tile {
+    opacity: calc(0.6 - var(--d) * 0.15);
+  }
+
+  .hero__halo {
+    inset: -60px -40px;
+  }
 }
 
 /* ==========================================================================

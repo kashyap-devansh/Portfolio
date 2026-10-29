@@ -1,6 +1,12 @@
 /* Filler card for odd project counts */
 
+/* The fill rises from the bottom like the buttons, and the type flips to the
+   inverted ink with it. */
 .more-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  transition: color 0.45s var(--ease-out);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -9,9 +15,41 @@
   padding: clamp(22px, 3vw, 44px);
 }
 
-.more-card__title {
+.more-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--invert-bg);
+  transform: translateY(101%);
+  transition: transform 0.6s var(--ease-out);
+}
+
+.more-card:hover {
+  color: var(--invert-fg);
+}
+
+.more-card:hover::before {
+  transform: translateY(0);
+}
+
+/* Beats .display's ink colour so the title follows the card. */
+.more-card .more-card__title {
   font-size: clamp(2rem, 4vw, 3.75rem);
   color: inherit;
+}
+
+.more-card__title .serif {
+  transition: color 0.45s var(--ease-out);
+}
+
+.more-card:hover .more-card__title .serif {
+  color: var(--accent);
+}
+
+.more-card:hover .faint {
+  color: inherit;
+  opacity: 0.6;
 }
 
 .more-card__cta {

@@ -26,11 +26,11 @@ export default function MoreCard({ to }) {
   );
 
   return to ? (
-    <Link to={to} className="more-card invert-block">
+    <Link to={to} className="more-card">
       {body}
     </Link>
   ) : (
-    <a href={profile.github} target="_blank" rel="noreferrer" className="more-card invert-block">
+    <a href={profile.github} target="_blank" rel="noreferrer" className="more-card">
       {body}
     </a>
   );
