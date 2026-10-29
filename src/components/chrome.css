@@ -215,6 +215,54 @@
   color: var(--invert-fg);
 }
 
+/* Music toggle: equaliser bars that follow the music, flat with a slash when muted. */
+.music-btn {
+  position: relative;
+}
+
+.music-btn__bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 14px;
+}
+
+.music-btn__bars i {
+  width: 2px;
+  height: 100%;
+  background: currentColor;
+  transform: scaleY(0.25);
+  transform-origin: bottom;
+  transition: transform 0.4s var(--ease-out);
+}
+
+/* On but not yet audible (waiting for the first click): bars stand at rest.
+   Once playing, Navbar sets each bar's height from the live audio. */
+.music-btn.is-on .music-btn__bars i {
+  transform: scaleY(0.5);
+  transition: transform 0.08s linear;
+}
+
+.music-btn.is-on .music-btn__bars i:nth-child(2) { transform: scaleY(0.75); }
+.music-btn.is-on .music-btn__bars i:nth-child(3) { transform: scaleY(0.4); }
+.music-btn.is-on .music-btn__bars i:nth-child(4) { transform: scaleY(0.6); }
+
+.music-btn__slash {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 22px;
+  height: 1.5px;
+  background: currentColor;
+  translate: -50% -50%;
+  rotate: -45deg;
+  transition: scale 0.35s var(--ease-out);
+}
+
+.music-btn.is-on .music-btn__slash {
+  scale: 0 1;
+}
+
 .nav__cta {
   height: var(--nav-h);
 }

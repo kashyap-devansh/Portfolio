@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-motion";
 import { profile } from "../data/site.js";
-import { useClock, useTheme } from "./hooks.js";
+import { useClock, useMusic, useTheme } from "./hooks.js";
 import { ease } from "./motion.jsx";
+import { onBeat } from "./music.js";
 
 const links = [
   { to: "/", label: "Index", end: true },
@@ -47,8 +48,47 @@ function ThemeToggle({ theme, toggle }) {
   );
 }
 
+function MusicToggle({ on, toggle }) {
+  const bars = useRef(null);
+
+  // While music plays the bars show its real levels, bass on the left to treble
+  // on the right. Each bar is scaled against its own recent peak so quiet
+  // treble still moves and loud bass doesn't sit pinned at the top.
+  useEffect(() => {
+    const peaks = [0, 0, 0, 0];
+    return onBeat((_, bands) => {
+      const els = bars.current?.children;
+      if (!els) return;
+      bands.forEach((v, i) => {
+        peaks[i] = Math.max(v, peaks[i] * 0.995, 0.05);
+        const level = (v / peaks[i]) ** 2;
+        els[i].style.transform = v ? `scaleY(${(0.12 + level * 0.88).toFixed(3)})` : "";
+      });
+    });
+  }, []);
+
+  return (
+    <button
+      className={`nav__icon-btn music-btn ${on ? "is-on" : ""}`}
+      onClick={toggle}
+      aria-pressed={on}
+      aria-label={on ? "Mute background music" : "Play background music"}
+      title={on ? "Mute music" : "Play music"}
+    >
+      <span className="music-btn__bars" aria-hidden="true" ref={bars}>
+        <i />
+        <i />
+        <i />
+        <i />
+      </span>
+      <span className="music-btn__slash" aria-hidden="true" />
+    </button>
+  );
+}
+
 export default function Navbar({ ready }) {
   const [theme, toggleTheme] = useTheme();
+  const [musicOn, toggleMusic] = useMusic();
   const [open, setOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -105,6 +145,7 @@ export default function Navbar({ ready }) {
             <span className="pulse-dot" />
             <span className="faint">IN</span> {time}
           </span>
+          <MusicToggle on={musicOn} toggle={toggleMusic} />
           <ThemeToggle theme={theme} toggle={toggleTheme} />
           <Link to="/#contact" className="btn btn--solid nav__cta">
             Let's talk

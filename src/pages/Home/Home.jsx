@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 
@@ -20,6 +20,7 @@ import {
   SplitWords,
   ease,
 } from "../../components/motion.jsx";
+import { onBeat } from "../../components/music.js";
 import ProjectCard from "../../components/ProjectCard.jsx";
 import MoreCard from "../../components/MoreCard.jsx";
 import portrait from "../../assets/img/portrait.webp";
@@ -68,6 +69,17 @@ function Hero({ ready }) {
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
   const fade = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
+
+  // The Λ and the orbiting logos pulse on the music's kick drum. Only this
+  // section's --beat changes, so the restyle stays local to the hero.
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let shown = -1;
+    return onBeat((pulse) => {
+      const v = Math.round(pulse * 50) / 50;
+      if (v !== shown) ref.current?.style.setProperty("--beat", (shown = v));
+    });
+  }, []);
 
   const reveal = (delay) => ({
     initial: { opacity: 0, y: 18 },
