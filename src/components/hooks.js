@@ -37,7 +37,7 @@ export function useTheme() {
     document.documentElement.setAttribute("data-theme", theme);
     document
       .querySelector('meta[name="theme-color"]')
-      ?.setAttribute("content", theme === "light" ? "#f2f1ee" : "#0f0f11");
+      ?.setAttribute("content", theme === "light" ? "#efe9df" : "#0f0f11");
     try {
       localStorage.setItem("theme", theme);
     } catch {

@@ -45,9 +45,9 @@
 }
 
 :root[data-theme="light"] {
-  --bg: #f2f1ee;
-  --bg-raised: #faf9f7;
-  --bg-sunken: #e9e8e4;
+  --bg: #efe9df;
+  --bg-raised: #f7f2ea;
+  --bg-sunken: #e5ddd0;
   --ink: #101014;
   --ink-strong: #000000;
   --muted: rgba(16, 16, 20, 0.66);
@@ -55,7 +55,7 @@
   --line: rgba(16, 16, 20, 0.14);
   --line-strong: rgba(16, 16, 20, 0.32);
   --invert-bg: #101014;
-  --invert-fg: #f2f1ee;
+  --invert-fg: #efe9df;
 
   /* Darker orange keeps 4.5:1 contrast on the light surface. */
   --accent: #e2470c;
