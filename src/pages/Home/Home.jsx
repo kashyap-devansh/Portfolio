@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
 
 import {
   capabilities,
@@ -232,6 +232,10 @@ function AboutTeaser() {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
   const photoY = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
+  // Watch the unclipped wrapper, not the figure: Chromium's IntersectionObserver
+  // honours the figure's own clip-path, so a fully clipped figure never "enters".
+  const sideRef = useRef(null);
+  const photoIn = useInView(sideRef, { once: true, amount: 0.3 });
 
   return (
     <section ref={ref} className="section about-teaser">
@@ -251,15 +255,14 @@ function AboutTeaser() {
             text="I'm passionate about building software from scratch. From an interpreted programming language to a SQL-like database engine, I enjoy turning ideas into working systems. My goal is to master the foundations of software engineering and build technology that is efficient, reliable and crafted with a deep understanding of how it works behind the scenes."
           />
 
-          <div className="about-teaser__side">
+          <div ref={sideRef} className="about-teaser__side">
             <motion.figure
               className="about-teaser__photo"
               initial={{ clipPath: "inset(100% 0 0 0)" }}
-              whileInView={{ clipPath: "inset(0% 0 0 0)" }}
-              viewport={{ once: true, amount: 0.3 }}
+              animate={photoIn ? { clipPath: "inset(0% 0 0 0)" } : undefined}
               transition={{ duration: 1.4, ease }}
             >
-              <motion.img src={portrait} alt="Portrait of Devansh Kashyap" loading="lazy" style={{ y: photoY }} />
+              <motion.img src={portrait} alt="Portrait of Devansh Kashyap" style={{ y: photoY }} />
               <figcaption className="hud-label">
                 <span>Devansh Kashyap</span>
                 <span>IN</span>
